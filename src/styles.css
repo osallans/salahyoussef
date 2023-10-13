@@ -1,0 +1,76 @@
+
+.required-field {
+    border: solid 2px lightcoral !important;
+}
+.invalid-field{
+    border: solid 2px wheat !important;
+}
+.taken-value-field{
+    border: solid 2px #FF9800 !important;
+}
+
+.error-message{
+    color:lightcoral;
+}
+.warning-message{
+    font-size: smaller;
+    padding: 10px;
+    color: #9E9E9E;
+}
+/* Always set the map height explicitly to define the size of the div * element that contains the map. */
+#map {height: 100%;}
+agm-map {
+    height: 300px;
+  }
+.cart-empty{
+    width: 100% !important;
+    text-align: center;
+}
+gallery-core[imageSize=contain] gallery-slider .g-image-item {
+    background-size: cover !important;
+}
+.contact #map {
+    background-color: white !important;
+}
+.g-thumbs-container {
+
+    background: #fff;
+}
+gallery {
+    height:600px !important;
+    background-color: #fff !important;
+}
+.snotify {
+    width: 600px !important;
+ }
+
+ .snotify-error {
+    background-color: #b1342b;
+}
+ .snotify-centerTop,
+.snotify-centerCenter,
+.snotify-centerBottom {
+  left: calc(50% - 600px/2) !important; }
+
+
+  .snotify-confirm {
+    background-color: #0f7249 !important;
+}
+
+  
+.snotifyToast__title {
+    font-size: 20px !important;
+    font-weight: bold;
+}
+
+
+@media (max-width: 500px ){
+    .snotify {
+        width: 350px !important;
+     }
+    
+     .snotify-centerTop,
+    .snotify-centerCenter,
+    .snotify-centerBottom {
+      left: calc(50% - 350px/2) !important; }
+    }

@@ -1,0 +1,147 @@
+.products-list-filters-progress-bar{
+    left:-3px;
+    top:-25px;
+    width:106%;
+}
+::ng-deep .mat-paginator-page-size-select {
+    width: 40px!important;
+}
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: transparent;
+}
+ 
+::ng-deep .mat-select-value {
+  color: #3a3e44;
+    font-weight: bold;
+    font-size: 15px;
+}
+::ng-deep .mat-select-arrow {
+    color: #3a3e44;
+}
+::ng-deep .mat-option{
+  padding: 0!important;
+
+}
+::ng-deep .mat-option-text {
+
+    text-align: center;
+}
+.mat-paginator {
+    color: #424242;
+    background-color: #fff;
+    
+}
+::ng-deep.mat-button-disabled.mat-button-disabled, 
+.mat-icon-button.mat-primary.mat-button-disabled, .mat-icon-button.mat-accent.mat-button-disabled, 
+.mat-icon-button.mat-warn.mat-button-disabled, .mat-icon-button.mat-button-disabled.mat-button-disabled, .mat-stroked-button.mat-primary.mat-button-disabled, .mat-stroked-button.mat-accent.mat-button-disabled, .mat-stroked-button.mat-warn.mat-button-disabled, .mat-stroked-button.mat-button-disabled.mat-button-disabled {
+    color: rgb(14 14 14 / 30%) !important;
+}
+::ng-deep .mat-paginator-range-label {
+    margin: 0 5px 0 5px !important;
+}
+::ng-deep .mat-paginator-container {
+
+    justify-content: flex-start !important;
+}
+::ng-deep  .mat-paginator-page-size-select {
+    margin: 0px 0px 0 4px;
+}
+.sort-bar {
+    margin-bottom: 0px;
+    padding: 0px 0;
+}
+
+.pull-right{
+    text-align: right;
+    margin-top:15px;
+}
+
+
+
+::ng-deep    .custom-slider .ngx-slider .ngx-slider-bar {
+      background: #ffe4d1;
+      height: 5px;
+    }
+    ::ng-deep   .custom-slider .ngx-slider .ngx-slider-selection {
+      background: orange;
+    }
+  
+    ::ng-deep   .custom-slider .ngx-slider .ngx-slider-pointer {
+      width: 10px;
+      height: 15px;
+      top: auto; /* to remove the default positioning */
+      bottom: 0;
+      background-color: #3c5570;
+    }
+  
+    ::ng-deep   .custom-slider .ngx-slider .ngx-slider-pointer:after {
+      display: none;
+    }
+  
+    ::ng-deep   .custom-slider .ngx-slider .ngx-slider-bubble {
+      bottom: 14px;
+    }
+  
+    ::ng-deep   .custom-slider .ngx-slider .ngx-slider-limit {
+      font-weight: bold;
+      color: red;
+    }
+  
+    ::ng-deep  .custom-slider .ngx-slider .ngx-slider-tick {
+      width: 1px;
+      height: 15px;
+      margin-left: 4px;
+      border-radius: 0;
+      background: black;
+      top: -1px;
+    }
+  
+    ::ng-deep  .custom-slider .ngx-slider .ngx-slider-tick.ngx-slider-selected {
+      background: rgb(0, 110, 255);
+    }
+  
+
+    /* Remove default bullets */
+ul, #myUL {
+    list-style-type: none;
+  }
+  
+  /* Remove margins and padding from the parent ul */
+  #myUL {
+    margin: 0;
+    padding: 0;
+  }
+
+  span
+  {
+    caret-shape: block;
+  }
+  
+  /* Style the caret/arrow */
+  .caret {
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+  }
+  
+  /* Create the caret/arrow with a unicode, and style it */
+  .caret::before {
+    content: "\25B6";
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  
+  /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+  .caret-down::before {
+    transform: rotate(90deg);
+  }
+  
+  /* Hide the nested list */
+  .nested {
+    display: none;
+  }
+  
+  /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+  .active {
+    display: block;
+  }

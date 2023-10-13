@@ -1,0 +1,7 @@
+::ng-deep  .modal-dialog-scrollable .modal-content {
+    overflow: unset !important;
+}
+
+::ng-deep  gallery-thumbs {
+    visibility: visible !important;
+  }

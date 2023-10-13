@@ -1,0 +1,74 @@
+<div class="modal-header">
+    <div class="modal-title">
+      <h4>{{ modalContentType }} Company Tier</h4>
+    </div>
+    <button type="button" class="close" aria-label="Close" (click)="dismissModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<form (ngSubmit)="onSubmitForm(createForm)" [formGroup]="createForm">
+<div class="modal-body">
+      
+        <div class="row">
+            <!-------------------------------------------Company ----------------------------------------------------------->     
+            <div *ngIf="companiesList && companiesList.length>0" class="col-md-6" 
+                >
+                <label for="companyId" class="required">Company</label>
+                <select [attr.disabled]="true" class="form-control input-lg" id="companyId" formControlName="companyId" [ngClass]="{'required-field':formField('companyId').errors?.required && formField('companyId').touched}"  >
+                    <option *ngFor="let entry of companiesList" [ngValue]="entry.companyId"> {{ entry.companyName }}</option>
+                </select>
+            </div> 
+          </div>
+        <br/>
+        <div class="row">
+            <!-------------------------------------------isActive ----------------------------------------------------------->   
+              <!-- <div class="col-md-3">
+                <label for="isActive" class="required">Active</label>
+                <select class="form-control input-lg" [ngClass]="{'required-field':formField('isActive').errors?.required && formField('isActive').touched}" id="isActive" formControlName="isActive"  >
+                    <option [ngValue]="1"> YES </option>
+                    <option [ngValue]="0"> NO  </option>
+                </select>
+            </div>  -->
+            <!-------------------------------------------Range From Value ----------------------------------------------------------->
+            <div class="col-md-3">
+                <label for="txt_rangeFrom" class="required">Range From</label>
+                <input id="txt_rangeFrom" [ngClass]="{'required-field':formField('rangeFrom').errors?.required && formField('rangeFrom').touched}"
+                type="text" class="form-control input-lg" formControlName="rangeFrom"
+                NumbersOnly [allowDecimals]="true" [allowSign]="false" oninput="this.value = this.value.substr(0,6).toUpperCase()">
+            </div>
+            <!-------------------------------------------Range To Value ----------------------------------------------------------->
+            <div class="col-md-3">
+                <label for="txt_rangeTo" class="required">Range To</label>
+                <input id="txt_rangeTo" [ngClass]="{'required-field':formField('rangeTo').errors?.required && formField('rangeTo').touched}"
+                type="text" class="form-control input-lg" formControlName="rangeTo"
+                NumbersOnly [allowDecimals]="true" [allowSign]="false" oninput="this.value = this.value.substr(0,6).toUpperCase()">
+            </div>
+            <!-------------------------------------------Fees ----------------------------------------------------------->
+            <div class="col-md-3">
+              <label for="txt_fees" class="required">Fees</label>
+              <input id="txt_fees" [ngClass]="{'required-field':formField('fees').errors?.required && formField('fees').touched}"
+              type="text" class="form-control input-lg" formControlName="fees"
+              NumbersOnly [allowDecimals]="true" [allowSign]="false" oninput="this.value = this.value.substr(0,6).toUpperCase()">
+            </div>
+    </div>
+</div>
+<!-------------------------------------------Footer ----------------------------------------------------------->
+<div class="modal-footer">
+      <div class="row">
+        <div class="col-md-9 row">
+  
+          <div class="col-md-6">
+            <div class="div-req"></div> = required
+          </div>
+          <div class="col-md-6">
+            <div class="div-invalidvalue"></div> = invalid
+          </div>
+        </div>
+        <div class="col-md-3">
+          <button [disabled]="!createForm.valid || createForm.pristine" class="btn btn-success float-right" type="submit">
+            Save Entry
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>

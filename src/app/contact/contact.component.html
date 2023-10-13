@@ -1,0 +1,137 @@
+ <!-- ========================  Contact ======================== -->
+
+ <section class="contact">
+
+    <!-- === Goolge map === -->
+
+    <div id="map">
+
+     <!--=========================== Maps & rating ============================-->
+        <!--<div>
+         <agm-map [latitude]="30.4353088" [longitude]="30.2714005" [zoom]="8" [disableDefaultUI]="false">
+            <agm-marker [latitude]="30.4353088" [longitude]="30.2714005" [label]="" [markerDraggable]="false"></agm-marker>
+         </agm-map>
+        </div>
+    -->
+    <img src="assets/images/image.png" style="width: 100%;" />
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-10 offset-md-1">
+
+                <div class="contact-block">
+
+                    <div class="contact-info">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <figure class="text-center">
+                                    <span class="icon icon-map-marker"></span>
+                                    <figcaption>
+                                        <strong translate>contact_content_1</strong>
+                                        <span translate>contact_content_2</span>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <!--
+                            <div class="col-sm-4">
+                                <figure class="text-center">
+                                    <span class="icon icon-phone"></span>
+                                    <figcaption>
+                                        <strong>Call us</strong>
+                                        <span>
+                                            <strong>T</strong> +1 222 333 4444 <br />
+                                            <strong>F</strong> +1 222 333 5555
+                                        </span>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-sm-4">
+                                <figure class="text-center">
+                                    <span class="icon icon-clock"></span>
+                                    <figcaption>
+                                        <strong>Working hours</strong>
+                                        <span>
+                                            <strong>Mon</strong> - Sat: 10 am - 6 pm <br />
+                                            <strong>Sun</strong> 12pm - 2 pm
+                                        </span>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+
+                    
+                    <div class="contact-info" [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+                    'leftToRight':translateService.currentLang=='en'}">
+                        <h2 class="title" translate>send_email</h2>
+                        <p translate>
+                        send_email_desc </p>
+
+                        <div class="contact-form-wrapper">
+
+                            <div class="contact-form clearfix">
+                                <form (ngSubmit)="onSubmitForm(createForm)" [formGroup]="createForm">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input id="txt_name"  
+                                                [attr.placeholder]="translateService.instant('list_name')"
+                                                [ngClass]="{'required-field':formField('name').errors?.required && formField('name').touched}"
+                                                type="text" class="form-control input-lg" formControlName="name">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input 
+                                                [attr.placeholder]="translateService.instant('email')"
+                                                [ngClass]="{'required-field':formField('mail').errors?.required && formField('mail').touched,
+                                                'invalid-field': formField('mail').errors?.pattern}" id="mail" type="mail" class="form-control input-lg" formControlName="mail">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+
+                                            <div class="form-group">
+                                                <input id="txt_phone" 
+                                                [attr.placeholder]="translateService.instant('modal_mobile')"
+                                                [ngClass]="{'required-field':formField('phone').errors?.required && formField('phone').touched}"
+                                                type="text" class="form-control input-lg" formControlName="phone"
+                                                NumbersOnly [allowDecimals]="true" [allowSign]="false" 
+                                                oninput="this.value = this.value.substr(0,12).toUpperCase()">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea rows="4" cols="50"
+                                                [attr.placeholder]="translateService.instant('message')"
+                                                id="txt_message" [ngClass]="{'required-field':formField('message').errors?.required && formField('message').touched}"
+                                                    class="form-control input-lg" formControlName="message">
+                                                </textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 text-center">
+                                            <button [disabled]="!createForm.valid || createForm.pristine" class="btn btn-success float-right" type="submit"
+                                                translate>send
+                                              </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div> 
+            
+                <!--/contact-block-->
+            </div><!--col-sm-8-->
+        </div> <!--/row-->
+    </div><!--/container-->
+</section>
+

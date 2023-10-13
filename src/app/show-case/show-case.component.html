@@ -1,0 +1,41 @@
+ <!-- ========================  Products ======================== -->
+
+ <section class="products pt-0">
+
+    <!--Header-->
+
+    <header>
+        <div class="container" [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+        'leftToRight':translateService.currentLang=='en'}">
+            <h2 class="title" translate>showcase</h2>
+        </div>
+    </header>
+
+    <!--Content-->
+
+    <div class="container">
+
+        <div *ngIf="showCase && showCase.id" [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+            'leftToRight':translateService.currentLang=='en'}" class="row">
+
+            <!--Product item-->
+
+            <div  class="col-12 col-lg-12">
+                <article>
+                    <div class="figure-block">
+                        <div class="image">
+                            <img src="{{imgUrl?imgUrl+showCase.image:'assets/images/no-image.jpg'}}" alt="" width="100%" />
+                        </div>
+                        <div class="text">
+                            <h2 class="title h4"> {{(translateService.currentLang=='ar')?showCase.titlear:showCase.title}}</h2>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+          
+        </div><!--/row-->
+
+    </div> <!--/container-->
+
+</section>

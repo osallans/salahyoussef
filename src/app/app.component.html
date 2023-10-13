@@ -1,0 +1,94 @@
+
+<div class="wrapper">
+  <header class="bg-white mainHeader">
+    <app-top-menu></app-top-menu>
+  </header>
+  
+  <div id="main">
+    <router-outlet></router-outlet>
+    <ng-snotify [ngStyle]="{'direction':translateService.currentLang=='ar'?'rtl':'ltr'}"></ng-snotify>
+  </div>
+
+  <footer>
+
+    <div class="container-fluid">
+
+        <div class="footer-wrap">
+
+            <div class="container">
+
+                <!--footer showroom-->
+                <div class="footer-showroom">
+                    <div class="text-center">
+                        <a><img src="assets/images/logo.jpg" alt="" width="130" height="55" /></a>
+                    </div>
+                </div>
+
+                <!--footer links-->
+                <div class="footer-links">
+                    <div class="row">
+                        <!--
+                        <div class="col-md-3">
+                          <h5>Beitak</h5>
+                          <p><i>Add your email address to sign up for our monthly emails and to receive promotional offers.</i></p>
+                          <div class="form-group form-newsletter">
+                         </div>
+                        </div>
+                    -->
+                        <div class="col-md-5">
+                            <h5 translate>menu_quicklinks</h5>
+                            <ul>
+                                <li><a routerLink="/home" translate>menu_home</a></li>
+                                <li><a routerLink="/about" translate>menu_about</a></li>
+                                <li><a routerLink="/faq" translate>menu_faq</a></li>
+                                <li><a routerLink="/privacy" translate>menu_privacy</a></li>
+                                <li><a routerLink="/products-list" translate>menu_products</a></li>
+                                <li><a routerLink="/stores-list" translate>menu_stores</a></li>
+                                <li><a routerLink="/contact" translate>contact_us</a></li>
+                  
+                            </ul>
+                        </div>
+                        
+                        <div [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+                        'leftToRight':translateService.currentLang=='en'}" class="offset-md-3 col-md-3">
+                            <h5 translate>reach_us</h5>
+                            <div class="form-group form-newsletter">
+                              <ul>
+                                <li translate>contact_content_2</li>
+                                <li translate>contact_content_3</li>
+                                <li translate>contact_content_4</li>
+                            </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--footer social-->
+
+                <div class="footer-social">
+                    <div class="row">
+                        
+                        <div class="col-sm-12 links">
+                            <ul>
+                                <li><a href="https://www.facebook.com/Beitak.Guide/"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://instagram.com/beitak.guide?utm_medium=copy_link"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://www.youtube.com/channel/UC0D_xIiepqQ_aPv3wFXdoxg "><i class="fa fa-youtube"></i></a></li>
+                                <li><a href="https://www.pinterest.com/beitakg/_saved/ "><i class="fa fa-pinterest"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</footer>
+
+  </div>
+  
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-circus" [fullScreen] = "true"><p style="color: white"  translate> loading </p></ngx-spinner> <!----------------------------- Modal Form------------------------------->
+  <script>
+     
+   
+      </script>

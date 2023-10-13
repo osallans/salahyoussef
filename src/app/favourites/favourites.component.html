@@ -1,0 +1,52 @@
+ <!-- ========================  Products ======================== -->
+
+ <section class="products pt-0">
+
+    <!--Header-->
+
+    <header>
+        <div class="container" [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+        'leftToRight':translateService.currentLang=='en'}">
+            <h2 class="title" translate>favourite_items</h2>
+        </div>
+    </header>
+
+    <!--Content-->
+
+    <div class="container">
+
+        <div *ngIf="products && products.length>0" [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+            'leftToRight':translateService.currentLang=='en'}" class="row">
+
+            <!--Product item-->
+
+            <div *ngFor="let item of products" class="col-6 col-lg-4">
+                <article>
+                    <div class="figure-block">
+                        <div class="info">
+                           <!--             
+                            <span class="add-favorite">
+                                <a (click)="toggleFavourite(item.id)" data-title="Add to favorites" data-title-added="Added to favorites list">
+                                    <i class="icon icon-heart"></i>
+                                </a>
+                            </span>
+                            -->
+                        </div>
+                        <div class="image">
+                            <a routerLink="/product-detail/{{item.id}}">
+                                <img src="{{imgUrl+item.image}}" alt="" width="360" />
+                            </a>
+                        </div>
+                        <div class="text">
+                            <h2 class="title h4"><a routerLink="/product-detail/{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</a></h2>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+          
+        </div><!--/row-->
+
+    </div> <!--/container-->
+
+</section>

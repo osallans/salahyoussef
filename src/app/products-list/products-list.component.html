@@ -1,0 +1,401 @@
+        <!-- ======================== Products ======================== -->
+
+        <section class="products pt-0">
+
+            
+
+            <div class="container">
+
+                <div class="row"  [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+                'leftToRight':translateService.currentLang=='en'}">
+
+                    <!-- === Left content === -->
+
+                    <div class="col-lg-3">
+
+                        <!-- === Product filters === -->
+
+                        <div class="filters">
+
+                            <div class="filter-scroll-list">
+
+                                <div class="filter-header d-block d-sm-none">
+                                    <span class="h4">Filter products</span>
+                                   
+                                </div>
+                              <!--Type-->
+
+                              <div class="filter-box active">
+                                <div translate class="title">
+                                    modal_category
+                               </div>
+                                <div class="filter-content">
+                                    <mat-progress-bar class="products-list-filters-progress-bar" mode="indeterminate" [hidden]="(categories && categories.length>0)" mode="indeterminate"></mat-progress-bar>
+                                    
+                                    <span class="checkbox">
+                                        
+                                        <input [checked]="(!filterParam || (filterParam && !filterParam.includes('cat')) || 'catId_0' == filterParam) ? true : false" 
+                                        (change)="changeSearch($event)" type="radio" name="radiogroup-type" id="catId_0">
+                                        <label for="catId_0" translate>all <i></i>
+                                            
+                                        </label>
+                                        
+                                    </span>
+                                    <span *ngFor="let item of categories" class="checkbox">
+                                        <input [checked]="(filterParam && ('cat_'+item.id) == filterParam) ? true : false"   (change)="changeSearch($event)" type="radio" name="radiogroup-type" id="catId_{{item.id}}">
+                                        <label for="catId_{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}} <i></i>
+                                            <span (click)="toggleCaret(item.id);" onclick="this.classList.toggle('fa-angle-down');" 
+                                            style="padding:0 5px;" class="fa"
+                                            [ngClass]="{'fa-angle-left':translateService.currentLang=='ar',
+                                            'fa-angle-right':translateService.currentLang!='ar'}" >
+                                             </span>
+                                           
+                                        </label>
+                                        <ul *ngIf="item.children && item.children.length>0" [ngClass]="{'active':toggle==item.id}" class="nested">
+                                            <li>
+                                                <span *ngFor="let childItem of item.children" class="checkbox">
+                                                    <input [checked]="(filterParam && ('cat_'+childItem.id) == filterParam) ? true : false" 
+                                                      (change)="changeSearch($event)" type="radio" name="radiogroup-type" id="catId_{{childItem.id}}">
+                                                    <label for="catId_{{childItem.id}}">{{(translateService.currentLang=='ar')?childItem.namear:childItem.name}} <i></i>
+                                                    
+                                                    </label>
+                                                    </span>
+                                            </li>
+                                        
+                                        </ul>
+                                    </span>
+                                    
+                                </div>
+                            </div>
+                                <!--Room-->
+
+                                <div class="filter-box active">
+                                    <div translate class="title">
+                                        modal_room
+                                    </div>
+                                    <div class="filter-content">
+                                        <mat-progress-bar class="products-list-filters-progress-bar" mode="indeterminate" [hidden]="(rooms && rooms.length>0)" mode="indeterminate"></mat-progress-bar>
+                                        <span class="checkbox">
+                                            <input [checked]="(!filterParam || (filterParam && !filterParam.includes('room')) || 'roomId_0' == filterParam) ? true : false" 
+                                            (change)="changeSearch($event)" type="radio" name="radiogroup-room" id="roomId_0">
+                                            <label for="roomId_0" translate>all</label>
+                                        </span>
+                                        <span *ngFor="let item of rooms" class="checkbox">
+                                            <input [checked]="(filterParam && ('room_'+item.id) == filterParam) ? true : false" 
+                                            (change)="changeSearch($event)" type="radio" name="radiogroup-room" id="roomId_{{item.id}}">
+                                            <label for="roomId_{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                  <!--Style-->
+
+                                  <div class="filter-box active">
+                                    <div translate class="title">
+                                        modal_style
+                                    </div>
+                                    <div class="filter-content">
+                                        <mat-progress-bar class="products-list-filters-progress-bar" mode="indeterminate" [hidden]="(styles && styles.length>0)" mode="indeterminate"></mat-progress-bar>
+                                        <span class="checkbox">
+                                            <input [checked]="(!filterParam || (filterParam && !filterParam.includes('style')) || 'styleId_0' == filterParam)" 
+                                            (change)="changeSearch($event)" type="radio" name="radiogroup-style" id="styleId_0">
+                                            <label for="styleId_0" translate>all</label>
+                                        </span>
+                                       
+                                        <span *ngFor="let item of styles" class="checkbox">
+                                            <input [checked]="(filterParam && ('style_'+item.id) == filterParam) ? true : false" 
+                                            (change)="changeSearch($event)" type="radio" name="radiogroup-style" id="styleId_{{item.id}}">
+                                            <label for="styleId_{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!--Store-->
+
+                                <div class="filter-box active">
+                                    <div translate class="title">
+                                        modal_store
+                                    </div>
+                                    <div class="filter-content">
+                                        <mat-progress-bar class="products-list-filters-progress-bar" mode="indeterminate" [hidden]="(stores && stores.length>0)" mode="indeterminate"></mat-progress-bar>
+                                        <span class="checkbox">
+                                            <input 
+                                            [checked]="(!filterParam || (filterParam && !filterParam.includes('store')) || 'storeId_0' == filterParam)"
+                                            (change)="changeSearch($event)" type="radio" name="radiogroup-store" id="storeId_0">
+                                            <label for="storeId_0" translate>all</label>
+                                        </span>
+                                        <span *ngFor="let item of stores" class="checkbox">
+                                            <input [checked]="(filterParam && ('store_'+item.id) == filterParam) ? true : false" 
+                                            (change)="changeSearch($event)" type="radio" name="radiogroup-store" id="storeId_{{item.id}}">
+                                            <label for="storeId_{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="filter-box active">
+                                    <div class="title" translate>
+                                        price_range
+                                    </div>
+                                    <div class="filter-content">
+            
+                                        <div class="custom-slider">
+                                            <ngx-slider 
+                                            (userChange)="onSliderChange($event)"
+                                            (userChangeEnd)="onSliderChange($event)"
+                                            [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+                                          </div>
+                                    </div>
+                                </div>
+                               
+                                <!--District-->
+
+                                <div class="filter-box active">
+                                <div translate class="title">
+                                    modal_district
+                                </div>
+                                <div class="filter-content">
+                                    <mat-progress-bar class="products-list-filters-progress-bar" mode="indeterminate" [hidden]="(districts && districts.length>0)" mode="indeterminate"></mat-progress-bar>
+                                    <span class="checkbox">
+                                        <input [checked]="(!filterParam || (filterParam && !filterParam.includes('districts')) || 'districtId_0' == filterParam) ? true : false" 
+                                        (change)="changeSearch($event)" type="radio" name="radiogroup-district" id="districtId_0">
+                                        <label for="districtId_0" translate>all</label>
+                                    </span>
+                                    <span *ngFor="let item of districts" class="checkbox">
+                                        <input [checked]="(filterParam && ('district_'+item.id) == filterParam) ? true : false"
+                                        (change)="changeSearch($event)" type="radio" name="radiogroup-district" id="districtId_{{item.id}}">
+                                        <label for="districtId_{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</label>
+                                    </span>
+                                </div>
+                            </div>
+                                 
+                                <!--Discount-->
+                                    <!--
+                                        [manualRefresh]="true"
+                                    [triggerFocus]="true"
+                                    (userChangeStart)="onSliderChange($event)"
+                                    (userChange)="onSliderChange($event)"
+                                    (userChangeEnd)="onSliderChange($event)"
+                                    (valueChange)="onSliderChange($event)"
+                                    (highValueChange)="onSliderChange($event)"
+                                <div class="filter-box">
+                                    <div translate class="title">
+                                        modal_discount
+                                    </div>
+                                    <div class="filter-content">
+                                        <span class="checkbox">
+                                            <input type="radio" id="discountId1" name="discountPrice" checked="checked">
+                                            <label for="discountId1">Discount price</label>
+                                        </span>
+                                        <span class="checkbox">
+                                            <input type="radio" id="discountId2" name="discountPrice">
+                                            <label for="discountId2">Regular price</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            -->
+                                <!--Availability--
+
+                                <div class="filter-box">
+                                    <div class="title">
+                                        Availability
+                                    </div>
+                                    <div class="filter-content">
+                                        <span class="checkbox">
+                                            <input type="checkbox" id="availableId1" checked="checked">
+                                            <label for="availableId1">In stock <i>(152)</i></label>
+                                        </span>
+                                        <span class="checkbox">
+                                            <input type="checkbox" id="availableId2">
+                                            <label for="availableId2">1 Week <i>(100)</i></label>
+                                        </span>
+                                        <span class="checkbox">
+                                            <input type="checkbox" id="availableId3">
+                                            <label for="availableId3">2 Weeks <i>(80)</i></label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- -->
+
+                            </div> <!--/filter-scroll-->
+                            <!-- Close filters on mobile / update filters-->
+                            <div class="toggle-filters-close btn btn-circle">
+                                <i class="icon icon-cross"></i>
+                            </div>
+
+                        </div> <!--/filters-->
+                    </div>
+
+                    <!--Right content-->
+
+                    <div class="col-lg-9">
+
+                        <!-- === Sort bar === -->
+
+                        <div class="sort-bar clearfix row">
+
+                            <div class="sort-results col-sm-6" style="direction: ltr;"
+                            [ngStyle]="{'float':translateService.currentLang=='ar'?'right':'left'}">
+
+                                <!--Showing result per page-->
+                                <mat-paginator #paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[5,10,20]" (page)="pagingEvent($event)">
+                                </mat-paginator>
+                            </div>
+
+                            <!--Sort options-->
+
+                            <div [ngStyle]="{'text-align':translateService.currentLang=='ar'?'left':'right'}" class="sort-options pull-right col-sm-6" >
+
+                                <span class="d-none d-sm-inline-block" translate>list_sort</span>
+
+                                <select (change)="sortBy($event.target.value)">
+                                    <option value="name_asc" translate>list_name</option>
+                                    <option value="isfeatured_desc" translate>list_popular</option>
+                                    <option value="price_asc" translate>list_lowest</option>
+                                    <option value="price_desc" translate>list_highest</option>
+                                </select>
+
+                                <!--Grid-list view-->
+
+                                <span class="grid-list">
+                                   <!--
+                                    <a href="products-grid.html"><i class="fa fa-th-large"></i></a>
+                                    <a href="products-list.html"><i class="fa fa-align-justify"></i></a>  -->
+                                    <a href="javascript:void(0);" class="toggle-filters-mobile d-inline-block d-md-none">
+                                        <span class="spinner-grow spinner-grow-sm text-warning" role="status" aria-hidden="true"></span>
+                                        <i class="fa fa-sliders"></i>
+                                    </a>
+                                   
+                                </span>
+                            </div> <!--/sort-options-->
+                        </div>
+
+                        <!--Products collection-->
+
+                        <div *ngIf="productItems && productItems.length>0" class="row">
+
+                            <!--Product item-->
+
+                            <div *ngFor="let item of productItems" class="col-12">
+                                <article>
+                                    <div class="info">
+                                        
+                                        <span *ngIf="authenticationService.currentUserValue" 
+                                        class="add-favorite" [ngClass]="{'added':checkInFavourites(item.id)}">
+                                            <a (click)="toggleFavourite(item.id)" 
+                                            [attr.data-title]="translateService.instant('add_favourite')" 
+                                            [attr.data-title-added]="translateService.instant('remove_favourite')">
+                                                <i class="icon icon-heart"></i>
+                                            </a>
+                                        </span>
+                                        <span>
+                                            <a (click)="openQuickView(item)" class="mfp-open" data-title="Quick wiew">
+                                                <i class="icon icon-eye"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    
+                                    <span *ngIf="authenticationService.currentUserValue" (click)="toggleShowCase(item.id)" class="btn btn-add display-showcase">
+                                        <i class="icon icon-briefcase"></i>
+                                    </span>
+                                    
+                                    <div class="figure-list">
+                                        <div class="image">
+                                            <span  *ngIf="(item.discount>0)"  style="direction: ltr;" class="badge badge-warning">-{{item.discount}}%</span>
+                                       
+                                            <a routerLink="/product-detail/{{item.id}}">
+                                                <img style="max-height:240px;" src="{{imgUrl+item.image}}" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="text">
+                                            <h2 class="title h4">
+                                                <a routerLink="/product-detail/{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</a>
+                                            </h2>
+                                            <h6 class="title h6">
+                                                <a routerLink="/store-detail/{{item.storeid}}">{{(translateService.currentLang=='ar')?item.store_namear:item.store_name}}</a>
+                                            </h6>
+                                            <sub *ngIf="(item.discount!=0)">{{item.price | number:'1.0-0'}} <span translate>currency</span></sub>
+                                            <span *ngIf="(item.discount==0)" style="font-size:12px;">{{item.price | number:'1.0-0'}} <span translate>currency</span></span>
+                                            <sup *ngIf="(item.discount>0)">{{(item.price * (100-item.discount) / 100)| number:'1.0-0'}} <span translate>currency</span></sup>
+                                            <span class="description clearfix">
+                                                {{(translateService.currentLang=='ar')?item.descar:item.desc}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                        </div> <!--/row-->
+                        
+                    </div> <!--/col-lg-9-->
+
+                </div><!--/row-->
+            </div>
+
+
+        </section>
+
+        <!-- ========================  Last visited  ======================== -->
+
+        <section class="products">
+
+            <header>
+                <div class="container">
+                    <h2 class="title" [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}" translate>list_popular</h2>
+                </div>
+            </header>
+
+            <div *ngIf="popularItems && popularItems.length>0" class="container">
+
+                <div class="row" [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+                'leftToRight':translateService.currentLang=='en'}">
+
+                    <!--Product item-->
+                    <div *ngFor="let item of popularItems" class="col-6 col-lg-3">
+                        <article>
+                            <div class="info">
+                                <span>
+                                    <a (click)="openQuickView(item)" class="mfp-open" data-title="Quick wiew">
+                                        <i class="icon icon-eye"></i>
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="btn btn-add">
+                                <i class="icon icon-briefcase"></i>
+                            </div>
+                            <div class="figure-grid">
+                                <div class="image">
+                                    <a routerLink="/product-detail/{{item.id}}">
+                                        <img style="max-height:240px;" src="{{imgUrl+item.image}}" alt="" />
+                                    </a>
+                                </div>
+                                <div class="text">
+                                    <h2 class="title h4">
+                                        <a routerLink="/product-detail/{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</a>
+                                    </h2>
+                                    <h6 class="title h6">
+                                        <a routerLink="/store-detail/{{item.storeid}}">{{(translateService.currentLang=='ar')?item.store_namear:item.store_name}}</a>
+                                    </h6>
+                                    <sub *ngIf="(item.discount!=0)">{{item.price | number:'1.0-0'}} <span translate>currency</span></sub>
+                                    <span *ngIf="(item.discount==0)" style="font-size:12px;">{{item.price | number:'1.0-0'}} <span translate>currency</span></span>
+                                    <sup *ngIf="(item.discount>0)">{{(item.price * (100-item.discount) / 100)| number:'1.0-0'}} <span translate>currency</span></sup>
+                                     <span class="description clearfix">
+                                        {{(translateService.currentLang=='ar')?item.descar:item.desc}}
+                                    </span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                 
+                </div> <!--/row-->
+
+            </div> <!--/container-->
+
+        </section>
+
+        <!-- ========================  Newsletter ======================== -->
+        
+   <ng-template #productPopup let-modal>
+    <app-product-modal [modalContentType]="modalContentType" [selectedItem]="selectedItem"></app-product-modal>
+  </ng-template>

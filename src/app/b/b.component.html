@@ -1,0 +1,94 @@
+        <!-- ======================== stores ======================== -->
+
+        <section *ngIf="branch && branch.id" class="product pt-0">
+
+            <header [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}" >
+                <div class="container">
+                    <h2 class="title">{{(translateService.currentLang=='ar')?branch.store_namear:branch.store_name}}</h2>
+                </div>
+            </header>
+
+
+
+            <div class="main">
+                <div class="container">
+                    <div class="row product-flex">
+
+                        <div [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}" class="col-lg-8 col-sm-12 store-flex-info">
+                            <div class="clearfix">
+
+                                <div class="clearfix">
+
+                                    <div class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>details_address</strong></span>
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{(translateService.currentLang=='ar')?branch.addressar:branch.address}}</span>
+                                    </div>
+                                    <!--info-box-->
+
+                                    <div class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_phone</strong></span>
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{branch.phone}}</span>
+                                    </div>
+                                    <hr />
+                                    <!--info-box-->
+
+                                    <div class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_mobile</strong></span>
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{branch.mobile}}</span>
+                                    </div>
+                                    <hr />
+                                    <div class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>details_openhours</strong></span>
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{translateService.currentLang=='ar'?branch.openhoursar:branch.openhours}}</span>
+                                    </div> 
+                                    <hr />
+                                    <div class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>discount_code</strong></span>
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">
+                                            <button *ngIf="!isShown" class="btn-primary" (click)="insertCount()" type="checkbox" translate>show_code</button>
+                                            <span *ngIf="isShown" class="row container-fluid"  id="divshow" >
+                                             <b>[{{branch.AUTO_CODE}}]</b>
+                                            </span></span>
+                                    </div>
+                                    
+
+
+
+                                    <hr />
+
+                                    <!--info-box-->
+                                    <!--
+                                    <div class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_social</strong></span>
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">
+                                            <a *ngIf="store.facebook" href="{{store.facebook}}"><i class="fa fa-facebook fa-2x"></i></a>&nbsp;
+                                            <a *ngIf="store.instagram" href="{{store.instagram}}"><i class="fa fa-instagram fa-2x"></i></a>&nbsp;
+                                            <a *ngIf="store.website" href="{{store.website}}"><i class="fa fa-globe fa-2x"></i></a>&nbsp;
+                                        </span>
+                                    </div>
+                                    -->
+                                    
+                                    
+                                    
+                                </div> <!--/clearfix-->
+                            </div> <!--/store-info-wrapper-->
+                        </div> <!--/col-lg-4-->
+                        <!--store item gallery-->
+
+                        <div *ngIf="branch && branch.store_image"  class="col-lg-4 col-sm-12">
+
+                            <!--store gallery-->
+
+                            <div>
+                                <img  src="{{storeImageUrl+branch.store_image}}" alt="" style="width:100%" />
+                             </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+      <!--=========================== Comments & rating ============================-->
+      
+      

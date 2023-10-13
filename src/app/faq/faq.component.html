@@ -1,0 +1,51 @@
+ <!-- ========================  About ======================== -->
+<!--
+ <section class="about pt-4 pt-lg-5">
+
+    <div
+    [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}" 
+    class="container">
+
+        <div class="row">
+            <h2 translate>faq_content_1</h2>
+            <br/>
+            <div class="col-md-12"><h4 translate>faq_content_2</h4><p translate>faq_content_3</p></div>
+            <div class="col-md-12"><h4 translate>faq_content_4</h4><p translate>faq_content_5</p></div>
+            <div class="col-md-12"><h4 translate>faq_content_6</h4><p translate>faq_content_7</p></div>
+            <div class="col-md-12"><h4 translate>faq_content_8</h4><p translate>faq_content_9a</p><p translate>faq_content_9b</p><p translate>faq_content_9c</p></div>
+            <div class="col-md-12"><h4 translate>faq_content_10</h4><p translate>faq_content_11a</p><p translate>faq_content_11b</p></div>
+            <div class="col-md-12"><h4 translate>faq_content_12</h4><p translate>faq_content_13</p></div>
+            <div class="col-md-12"><h4 translate>faq_content_14</h4><p translate>faq_content_15a</p>
+                <p translate>faq_content_15b</p>
+                <p translate>faq_content_15c</p>
+                <p translate>faq_content_15d</p>
+                <p translate>faq_content_15e</p>
+        
+            </div>
+            <div class="col-md-12"><h4 translate>faq_content_16</h4><p translate>faq_content_17</p></div>
+            <div class="col-md-12"><h4 translate>faq_content_18</h4><p translate>faq_content_19</p></div>
+            <div class="col-md-12"><h4 translate>faq_content_20</h4><p translate>faq_content_21a</p>
+                <p translate>faq_content_21b</p>
+                <p translate>faq_content_21c</p>
+                <p translate>faq_content_21d</p>
+                <p translate>faq_content_21e</p>
+                <p translate>faq_content_21f</p>
+            </div>
+           
+        </div>
+    </div>
+
+</section>
+-->
+<section class="about pt-4 pt-lg-5">
+    <div
+    [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}" 
+    class="container">
+
+        <div class="row">
+            <div [innerHtml]="(translateService.currentLang=='ar')?arContent:enContent"></div> 
+            </div>
+
+        </div>
+
+ </section>

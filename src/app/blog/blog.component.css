@@ -1,0 +1,47 @@
+::ng-deep .mat-paginator-page-size-select {
+    width: 40px!important;
+}
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: transparent;
+}
+ 
+::ng-deep .mat-select-value {
+  color: #3a3e44;
+    font-weight: bold;
+    font-size: 15px;
+}
+::ng-deep .mat-select-arrow {
+    color: #3a3e44;
+}
+::ng-deep .mat-option{
+  padding: 0!important;
+
+}
+::ng-deep .mat-option-text {
+
+    text-align: center;
+}
+.mat-paginator {
+    color: #424242;
+    background-color: #fff;
+    
+}
+::ng-deep .mat-paginator-page-size
+{
+    visibility: hidden;
+}
+::ng-deep.mat-button-disabled.mat-button-disabled, 
+.mat-icon-button.mat-primary.mat-button-disabled, .mat-icon-button.mat-accent.mat-button-disabled, 
+.mat-icon-button.mat-warn.mat-button-disabled, .mat-icon-button.mat-button-disabled.mat-button-disabled, .mat-stroked-button.mat-primary.mat-button-disabled, .mat-stroked-button.mat-accent.mat-button-disabled, .mat-stroked-button.mat-warn.mat-button-disabled, .mat-stroked-button.mat-button-disabled.mat-button-disabled {
+    color: rgb(14 14 14 / 30%) !important;
+}
+::ng-deep .mat-paginator-range-label {
+    margin: 0 5px 0 5px !important;
+}
+::ng-deep .mat-paginator-container {
+
+    justify-content: flex-start !important;
+}
+::ng-deep  .mat-paginator-page-size-select {
+    margin: 0px 0px 0 4px;
+}

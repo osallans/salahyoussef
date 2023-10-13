@@ -1,0 +1,423 @@
+        <!-- ======================== Products ======================== -->
+
+        <section *ngIf="product && product.id" class="product pt-0">
+
+            <header [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}" >
+                <div class="container">
+                    <h2 class="title">{{(translateService.currentLang=='ar')?product.namear:product.name}}</h2>
+                    <div class="text">
+                        <p>{{(translateService.currentLang=='ar')?product.descar:product.desc}}</p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="main">
+                <div class="container">
+                    <div class="row product-flex">
+
+                        <div [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}" class="col-lg-4 product-flex-info">
+                            <div class="clearfix">
+
+                                <div class="clearfix">
+
+                                    <!--price wrapper-->
+
+                                    <div class="price">
+                                        <span class="h3">
+                                            <span *ngIf="(product.discount>0)">{{(product.price * (100-product.discount) / 100) | number:'1.0-0'}} <span translate>currency</span></span>
+                                            <small *ngIf="(product.discount>0)">{{product.price | number:'1.0-0'}} <span translate>currency</span></small>
+                                            <span *ngIf="(product.discount==0)">{{product.price | number:'1.0-0'}} <span translate>currency</span></span>
+                                        </span>
+                                    </div>
+
+                                    <hr />
+
+                                    <!--info-box-->
+
+                                    <div class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_store</strong></span>
+                                        <div *ngIf="store && store.id" [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{(translateService.currentLang=='ar')?store.namear:store.name}}</div>
+                                        <div [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><a (click)="scroll()" 
+                                            style="margin:10px 0px;cursor: pointer;color: #0000ff8a;" translate>modal_viewmore</a></div>
+                                    </div>
+                                    <hr />
+                                    <!--info-box-->
+
+                                    <div class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_room</strong></span>
+                                        <div *ngIf="productRooms && productRooms.length>0" class="product-colors clearfix">
+                                            <span class="badge badge-items" *ngFor="let item of productRooms">
+                                             {{(translateService.currentLang=='ar')?item.namear:item.name}}
+                                            </span>
+                                            <br/>
+                                         </div>
+                                    </div>
+
+                                    <hr />
+
+                                    <!--info-box-->
+
+                                    <div class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_style</strong></span>
+                                        <div *ngIf="productStyles && productStyles.length>0" class="product-colors clearfix">
+                                            <span class="badge badge-items" *ngFor="let item of productStyles">
+                                             {{(translateService.currentLang=='ar')?item.namear:item.name}}
+                                            </span>
+                                            <br/>
+                                         </div>
+                                     </div>
+
+                                    <hr />
+
+                                    <!--info-box-->
+
+                                    <div class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_material</strong></span>
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{(translateService.currentLang=='ar')?product.materialar:product.material}}</span>
+                                    </div>
+
+                                    <hr />
+
+
+                                    <!--info-box-->
+
+                                    <div class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_category</strong></span>
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{(translateService.currentLang=='ar')?product.category_namear:product.category_name}}</span>
+                                    </div>
+
+                                    <hr />
+                                    
+                                    <!--info-box-->
+
+                                    <div class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_specs</strong></span>
+                                        <span style="white-space: break-spaces;" [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{(translateService.currentLang=='ar')?product.specsar:product.specs}}</span>
+                                    </div>
+
+                                    <hr />
+                                    
+                                    <!--info-box-->
+
+                                    <div class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_dimensions</strong></span>
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{(translateService.currentLang=='ar')?product.dimensions:product.dimensions}}</span>
+                                    </div>
+                                      <!--info-box-->
+
+                              
+
+                                    <hr />
+
+                                    <!--info-box-->
+
+                                    <div  id="storesection" class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_color</strong></span>
+                                        <div *ngIf="productCombs && productCombs.length>0" class="product-colors clearfix">
+                                            <span class="badge badge-items" *ngFor="let item of productCombs">
+                                            {{(translateService.currentLang=='ar')?item.color_namear:item.color_name}}
+                                            </span>
+                                           <br/>
+                                            <!--
+                                            <span class="color-btn color-btn-red"></span>
+                                            <span class="color-btn color-btn-blue checked"></span>
+                                            <span class="color-btn color-btn-green"></span>
+                                            <span class="color-btn color-btn-gray"></span>
+                                            <span class="color-btn color-btn-biege"></span>
+                                           -->
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <!--info-box-->
+                                    <div class="info-box">
+                                            <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_available</strong></span>
+                                            <div *ngIf="productBranches && productBranches.length>0" class="product-colors clearfix">
+                                                <span class="badge badge-items" *ngFor="let item of productBranches">
+                                                 {{(translateService.currentLang=='ar')?item.namear:item.name}}
+                                                </span>
+                                                <br/>
+                                             </div>
+                                         </div>
+                                    <hr />
+
+                                    <div class="info-box">
+                                        <iframe [src]="fbProductUrl" width="67" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                                   
+                                        <hr/>
+                                    </div>
+
+                                    <!--info-box
+
+                                    <div class="info-box">
+                                        <span><strong>Choose size</strong></span>
+                                        <div class="product-colors clearfix">
+                                            <span class="color-btn color-btn-biege">
+                                                <span class="product-size" data-text="">S</span>
+                                            </span>
+                                            <span class="color-btn color-btn-biege checked">M</span>
+                                            <span class="color-btn color-btn-biege">XL</span>
+                                            <span class="color-btn color-btn-biege">XXL</span>
+                                        </div>
+                                    </div>
+                                   
+                                    <hr />
+                                     -->
+                                    <!--
+                                    <div class="info-box">
+                                        <span>
+                                            Quantity
+                                        </span>
+                                        <span>
+                                            <span class="row">
+                                                <span class="col-6">
+                                                    <input type="number" value="1" class="form-control">
+                                                </span>
+                                                <span class="col-6">
+                                                    <a href="#" class="btn btn-danger">Buy now</a>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <hr />
+
+                                    <div class="info-box">
+                                        <span>
+                                            <small>*** We progress your order for shipping as soon as possible. Please note that after your order has been received, we can not change the delivery address. Control your address details in any case before placing your order!</small>
+                                        </span>
+                                    </div>
+
+                                    <hr />
+-->
+                                    <div *ngIf="authenticationService.currentUserValue" 
+                                    
+                                    class="info-box info-box-addto"
+                                    [ngClass]="{'added':checkInFavourites(product.id)}">
+                                        <span (click)="toggleFavourite(product.id)"   [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">
+                                            <i class="add" translate><i class="fa fa-heart-o" style="margin:5px;"></i>add_favourite</i>
+                                            <i class="added" translate><i class="fa fa-heart" style="margin:5px;"></i> remove_favourite</i>
+                                        </span>
+                                    </div>
+                                    
+                                    <!--
+                                    <div class="info-box info-box-addto">
+                                        <span>
+                                            <i class="add"><i class="fa fa-eye-slash"></i> Add to Watch list</i>
+                                            <i class="added"><i class="fa fa-eye"></i> Remove from Watch list</i>
+                                        </span>
+                                    </div>
+                                -->
+           
+                                    <div  *ngIf="authenticationService.currentUserValue"  class="info-box info-box-addto display-showcase">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}" (click)="addToShowCase()">
+                                            <i [ngClass]="add" translate><i class="icon icon-briefcase" style="margin:5px;"></i> modal_showcase </i>
+                                        </span>
+                                    </div>
+                                
+                                </div> <!--/clearfix-->
+                            </div> <!--/product-info-wrapper-->
+                        </div> <!--/col-lg-4-->
+                        <!--product item gallery-->
+
+                        <div class="col-lg-8">
+
+                            <!--product gallery-->
+
+                            <div *ngIf="items && items.length>0"  >
+                                <gallery id="basic-test" [items]="items"></gallery>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <img style="margin:auto;" width="80%" src="assets/images/banner.jpg">
+            </div>
+        </section>
+
+        <!--=========================== Store & rating ============================-->
+        
+            
+        <section *ngIf="store && store.id" class="product-details" [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang!='ar'}">
+            <div class="container">
+
+                <!--Tab links-->
+
+                <ul class="nav nav-pills nav-pills-flat justify-content-center" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="tab-store-tab"  data-toggle="tab" href="#tab-store" role="tab">
+                            <span translate>details_storeinfo</span>
+                        </a>
+                    </li>
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab-info-tab"  data-toggle="tab" href="#tab-shipping" role="tab">
+                           <span translate>details_shipping</span> 
+                        </a>
+                    </li>
+                    -->
+                </ul>
+
+                <!--Tab content-->
+
+                <div class="tab-content" id="pills-tabContent">
+
+ 
+                    <div class="tab-pane fade show active" id="tab-store">
+
+                        <div class="col-md-8 offset-md-2">
+
+                            <div>
+                                <div class="h3 m-0">{{(translateService.currentLang=='ar')?store.namear:store.name}}</div>
+                                <span>{{(translateService.currentLang=='ar')?store.bioar:store.bio}}</span>
+                            </div>
+
+                            <hr />
+
+
+
+
+
+
+                <div  class="container" >
+                    <div class="row product-flex">
+
+                            <div class="col-md-6 product-flex-info">
+                                <div class="clearfix">
+
+                                    <div class="clearfix">
+
+                                        <iframe [src]="fbStoreUrl" width="67" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                                   
+                                        <hr/>
+
+                                        <!--info-box-->
+
+                                        <div  class="info-box">
+                                            <span><strong translate>modal_style</strong></span>
+                                            <div *ngIf="storeStyles && storeStyles.length>0" class="product-colors clearfix">
+                                                <span class="badge badge-items" *ngFor="let item of storeStyles">
+                                                 {{(translateService.currentLang=='ar')?item.namear:item.name}}
+                                                </span>
+                                                <br/>
+                                             </div>
+                                             </div>
+                                        <hr />
+
+                                        <!--info-box
+
+                                        <div class="info-box">
+                                            <span><strong>Budget</strong></span>
+                                            <span>$$$</span>
+                                        </div>
+
+                                        <hr />
+                                        -->
+
+                                        <!--info-box-->
+
+                                        
+                                        <div><a href="tel:{{store.phone}}"><i class="fa fa-phone"></i> {{store.phone}}</a></div>
+                                        <div><a href="{{store.facebook}}"><i class="fa fa-facebook"></i>  <span translate> details_facebook</span></a></div>
+                                        <div><a href="{{store.instagram}}"><i class="fa fa-instagram"></i>  <span translate> details_instagram</span></a></div>
+                                        <div><a href="{{store.website}}"><i class="fa fa-globe"></i>  <span translate> details_website</span></a></div>
+                                        <!--   <div><a href="http://www.americanfurniture.me/"><i class="fa fa-globe"></i> Visit Website</a></div> -->
+
+                                    </div> <!--/clearfix-->
+                                </div> <!--/product-info-wrapper-->
+                            </div> <!--/col-lg-4-->
+                            <!--product item gallery-->
+
+                            <div class="col-md-6 product-flex-gallery">
+
+                                <!--product gallery-->
+
+                                    <a routerLink="/store-detail/{{store.id}}"><img style="max-width: 320px;" src="{{storeImgUrl+store.image}}" alt="" /></a>
+                                
+                            </div>
+
+                    </div></div>
+                    <hr/>
+                    <div class="info-box">
+                        <span><strong translate>modal_branches</strong></span>
+                        <hr/>
+
+                        <div class="row"  *ngFor="let item of storeBranches">
+                            <div class="col-12"><b>{{translateService.currentLang=='ar'?item.district_namear:item.district_name}}</b></div>
+                            <div class="col-12">{{translateService.currentLang=='ar'?item.openhoursar:item.openhours}}</div>
+                            <div class="col-12">{{item.mobile}}</div>
+                            <div class="col-12">{{translateService.currentLang=='ar'?item.addressar:item.address}}</div>
+                            <div class="col-12"><a style="color:#5959ef" target="_blank" href="http://maps.google.com/?q={{item.lat}},{{item.lang}}">
+                                {{translateService.currentLang=='ar'?'الموقع علي الخريطه':'Maps Location'}}</a></div>
+                              <hr/>
+                       </div>    
+                            
+                    </div>
+
+                        </div> <!--/col-md-8-->
+
+
+                    </div>  <!--/tab-pane -->
+
+
+                    <!--Tab description-->
+
+
+                            <!--Comments-->
+
+                    <!--
+                    <div class="tab-pane fade" id="tab-shipping">
+
+                        <div class="col-md-8 offset-md-2">
+
+                            <div>
+                                <div class="h3 m-0">Shipping information</div>
+                                <span>Additional information</span>
+                            </div>
+
+                            <hr />
+
+                            <h5>Money Back Guarantee</h5>
+                            <p>
+                                Our Money Back Guarantee applies to virtually everything on our site, and
+                                there's no extra fee for coverage. It’s automatic and covers your purchase price plus
+                                original shipping on eligible purchases*. Follow these steps to get your refund.
+                            </p>
+
+                            <h5>Need to Return an Item?</h5>
+
+                            <p>
+                                Whatever you’re looking for, millions of items on our store are returnable. Before you
+                                buy an item, check the seller’s return policy, then follow these easy steps to
+                                make a return. If the item you received doesn't match the description in the
+                                original listing, or if it arrived faulty or damaged,
+                            </p>
+
+                            <h5>Check an open return request</h5>
+
+                            <p>
+                                You can keep an eye on the progress of your return request by selecting Check your
+                                return status below, or in your Purchase history.
+                            </p>
+
+                            <h5>Send the item back</h5>
+
+                            <p>
+                                You'll need to send it back within 5 business days. Who covers the shipping costs
+                                depends on why you're returning it. Find more information about return shipping.
+
+                                When you send your item back we recommend using tracked shipping. Adding tracking
+                                details to your return helps protect against delays or issues in the refund process.
+                            </p>
+                        </div> 
+
+
+                    </div>  <!--/tab-pane -->
+
+                </div> <!--/tab-content -->
+            </div>
+
+        </section>
+  

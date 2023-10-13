@@ -1,0 +1,110 @@
+<div class="popup-main" id="productid1">
+<div class="product">
+
+    <!--Popup-title -->
+
+    <div class="popup-title row" [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}">
+        <div class="h3 title col-md-9">
+            <span>{{(translateService.currentLang=='ar')?selectedItem.namear:selectedItem.name}}</span>
+            <small>{{(translateService.currentLang=='ar')?selectedItem.store_namear:selectedItem.store_name}}</small>
+        </div>
+        <div class="h3 title col-md-3" [ngClass]="{'lefty':translateService.currentLang=='ar','righty':translateService.currentLang!='ar'}">
+            <button (click)="dismissModal()">X</button>
+        </div>
+    </div>
+
+    <!--Product gallery-->
+
+    <div *ngIf="items && items.length>0"  >
+        <gallery id="basic-test" [items]="items"></gallery>
+    </div>
+
+    <!--Popup info-->
+
+    <div class="popup-content">
+        <div class="product-info-wrapper" [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+                                                    'leftToRight':translateService.currentLang=='en'}">
+            <div class="row">
+
+                <!--Left side-->
+
+                <div class="col-sm-6">
+                    <div class="info-box">
+                    
+                        <strong translate>modal_store</strong>
+                        <span [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+                        'leftToRight':translateService.currentLang=='en'}">{{(translateService.currentLang=='ar')?selectedItem.store_namear:selectedItem.store_name}}</span>
+                    
+                    </div>
+                    <div class="info-box">
+                        <strong translate>modal_material</strong>
+                        <span [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+                        'leftToRight':translateService.currentLang=='en'}">{{(translateService.currentLang=='ar')?selectedItem.materialar:selectedItem.material}}</span>
+                    </div>
+                    <!--
+                    <div class="info-box">
+                        <strong>Availability</strong>
+                        <span><i class="fa fa-check-square-o"></i> in stock</span>
+                    </div>
+                    -->
+                </div>
+
+                <!--Right side-->
+
+                <div class="col-sm-6">
+                    <div class="info-box">
+                        <!--
+                        <strong translate>modal_colors</strong>
+                        <div class="product-colors clearfix">
+                            <span class="color-btn color-btn-red"></span>
+                            <span class="color-btn color-btn-blue checked"></span>
+                            <span class="color-btn color-btn-green"></span>
+                            <span class="color-btn color-btn-gray"></span>
+                            <span class="color-btn color-btn-biege"></span>
+                        </div>
+                        -->
+                    </div>
+                    <!--
+                    <div class="info-box">
+                        <strong translate>modal_sizes</strong>
+                        <div class="product-colors clearfix">
+                            <span class="color-btn color-btn-biege">S</span>
+                            <span class="color-btn color-btn-biege checked">M</span>
+                            <span class="color-btn color-btn-biege">XL</span>
+                            <span class="color-btn color-btn-biege">XXL</span>
+                        </div>
+                    </div>
+                    -->
+                </div>
+
+            </div> <!--/row-->
+            <br/>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="info-box" style="direction:rtl;">
+                        {{(translateService.currentLang=='ar')?selectedItem.descar:selectedItem.desc}}
+                    </div>
+                </div>
+
+            </div>
+        </div> <!--/product-info-wrapper-->
+    </div> <!--/popup-content-->
+
+    <div class="popup-table" >
+        <div class="popup-cell">
+            <div class="price">
+                <span *ngIf="(selectedItem.discount>0)">{{(selectedItem.price * (100-selectedItem.discount) / 100) | number:'1.0-0'}} <span translate>currency</span></span>
+                <small *ngIf="(selectedItem.discount>0)">{{selectedItem.price | number:'1.0-0'}} <span translate>currency</span></small>
+                <span *ngIf="(selectedItem.discount==0)">{{selectedItem.price | number:'1.0-0'}} <span translate>currency</span></span>
+            </div>
+        </div>
+        <div class="popup-cell" [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}">
+            <div class="popup-buttons">
+                <a (click)="navigateToProductDetail()"><span class="icon icon-eye" style="margin:5px;"></span> <span class="hidden-xs" translate>modal_viewmore</span></a>
+                <a class="display-showcase" (click)="addToShowCase()"><span class="icon icon-briefcase" style="margin:5px;"></span> <span class="hidden-xs" translate>modal_showcase</span></a>
+            </div>
+        </div>
+    </div>
+
+</div> <!--/product-->
+</div>

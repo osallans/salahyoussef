@@ -1,0 +1,47 @@
+<div class="row table-title-row">
+    <div class="col-md-6">
+      <h2>Companies Tiers</h2>
+     
+    </div>
+     <!----------------------------- Controls------------------------------->
+    <div class="col-md-6">
+      <div class="float-right">
+    <!-------------------------------------------Company ----------------------------------------------------------->     
+          <label  *ngIf="companiesList && companiesList.length>0" for="companyId" class="required">Company</label>
+          &nbsp;
+          <select  *ngIf="companiesList && companiesList.length>0" #companySelected (change)="OnChange($event)" class="input-lg"  #chosenCompany>
+              <option *ngFor="let entry of companiesList" [ngValue]="entry.companyId" > {{ entry.companyName }}</option>
+          </select>
+          &nbsp; &nbsp; &nbsp;
+        <button class="btn btn-success" (click)="openModal('Edit', createCompanyTier)" *ngIf="showActions">
+          <span class="fa fa-plus pull-left"></span>
+          <span class="pull-right">Add Company Tier</span>
+        </button>
+        <button class="btn btn-danger" (click)="OnDelete()" *ngIf="showActions">
+          <span class="fa fa-plus pull-left"></span>
+          <span class="pull-right">Delete last tier</span>
+        </button>
+        <button class="btn btn-primary" (click)="OnPublish()" *ngIf="showActions">
+          <span class="fa fa-plus pull-left"></span>
+          <span class="pull-right">Publish company tiers</span>
+        </button>
+      </div>
+    </div>
+  </div>
+   <!----------------------------- Table------------------------------->
+  <div class="innerBody">
+    <div class="col-md-12">
+      <app-server-table *ngIf="dataLoaded" [headers]="tableHeaders" [rowactions]="tableactions"
+        [showcontrols]="showActions" [searchField]="companySearchObject" [columnsearch]="true" (methodCall)="tableMethodCall($event)"  [refreshValue]="refreshValue" [apiPath]="'company/back/tier'">
+      </app-server-table>
+    </div>
+  </div>
+  <!----------------------------- Add Form------------------------------->
+  <ng-template #createCompanyTier let-modal>
+    <app-company-tier-add 
+    [modalContentType]="modalContentType" 
+    [companiesTiers]="companiesTiersData"
+    [companyTier]="companyTierRow"
+    (notifyParent) = "getNotification($event)">
+  </app-company-tier-add>
+  </ng-template>

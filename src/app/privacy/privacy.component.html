@@ -1,0 +1,14 @@
+ <!-- ========================  About ======================== -->
+
+ <section class="about pt-4 pt-lg-5">
+    <div
+    [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}" 
+    class="container">
+
+        <div class="row">
+            <div [innerHtml]="(translateService.currentLang=='ar')?arContent:enContent"></div> 
+            </div>
+
+        </div>
+
+ </section>

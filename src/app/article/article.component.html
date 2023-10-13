@@ -1,0 +1,59 @@
+<div *ngIf="blog&&blog.id" class="col-md-10 offset-md-1 col-lg-8 offset-lg-2"
+    >
+
+    <!--Blog post-->
+
+    <div class="blog-post pt-3 pt-md-4">
+
+        <!--Main image-->
+
+        <!--
+        <div class="blog-image-main">
+            <img src="assets/images/product-2.jpg" alt="" />
+        </div>
+        -->
+        <!--Blog content-->
+
+        <div class="blog-post-content">
+
+            <!--Title-->
+
+            <div class="blog-post-title">
+
+                <h1 class="h1 blog-title">
+                    {{(translateService.currentLang=='ar')?blog.titlear:blog.title}}
+                </h1>
+
+               <!--Info-->
+
+                <div class="blog-info blog-info-top">
+                    <!--
+                    <div class="entry">
+                        <i class="fa fa-user"></i>
+                        <span>John Doe</span>
+                    </div>
+                    -->
+                    <div class="entry">
+                        <i class="fa fa-calendar"></i> &nbsp;
+                        <span> {{ blog.dateadded | date: 'dd.MM.yyyy'}}</span>
+                    </div>
+                    <!--
+                    <div class="entry">
+                        <i class="fa fa-comments"></i>
+                        <span>4 comments</span>
+                    </div>
+                    -->
+                </div>
+
+            </div>
+
+            <!--Blog text-->
+
+            <div class="blog-post-text">
+                <br/>
+                <div style="width: 100%;" [innerHtml]="(translateService.currentLang=='ar')?sanitizer.bypassSecurityTrustHtml(blog.bodyar):sanitizer.bypassSecurityTrustHtml(blog.body)"></div> 
+            </div>
+            </div>
+    </div>
+    </div>
+

@@ -1,0 +1,159 @@
+        <!-- ======================== stores ======================== -->
+
+        <section class="products pt-0">
+
+            
+
+            <div class="container">
+
+                <div class="row"  [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+                'leftToRight':translateService.currentLang=='en'}">
+
+                    <!-- === Left content === -->
+
+                    <div class="col-lg-3">
+
+                        <!-- === store filters === -->
+
+                        <div class="filters">
+
+                            <div class="filter-scroll-list">
+
+                                <div class="filter-header d-block d-sm-none">
+                                    <span class="h4">Filter stores</span>
+                                   
+                                </div>
+         
+                                <!--Room-->
+
+                                <div class="filter-box active">
+                                    <div translate class="title">
+                                        modal_district
+                                    </div>
+                                    <div class="filter-content">
+                                        <mat-progress-bar class="stores-list-filters-progress-bar" mode="indeterminate" [hidden]="(districts && districts.length>0)" mode="indeterminate"></mat-progress-bar>
+                                        <span class="checkbox">
+                                            <input [checked]="(!filterParam || (filterParam && !filterParam.includes('district')) || 'districtId_0' == filterParam) ? true : false"  
+                                            (change)="changeSearch($event)" type="radio" name="radiogroup-district" id="districtId_0">
+                                            <label for="districtId_0" translate>all</label>
+                                        </span>
+                                        <span *ngFor="let item of districts" class="checkbox">
+                                            <input [checked]="(filterParam && ('district_'+item.id) == filterParam) ? true : false" 
+                                            (change)="changeSearch($event)" type="radio" name="radiogroup-district" id="districtId_{{item.id}}">
+                                            <label for="districtId_{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                  <!--Style-->
+
+                                  <div class="filter-box active">
+                                    <div translate class="title">
+                                        modal_style
+                                    </div>
+                                    <div class="filter-content">
+                                        <mat-progress-bar class="stores-list-filters-progress-bar" mode="indeterminate" [hidden]="(styles && styles.length>0)" mode="indeterminate"></mat-progress-bar>
+                                        <span class="checkbox">
+                                            <input [checked]="(!filterParam || (filterParam && !filterParam.includes('style')) || 'styleId_0' == filterParam) ? true : false" 
+                                            (change)="changeSearch($event)" type="radio" name="radiogroup-style" id="styleId_0">
+                                            <label for="styleId_0" translate>all</label>
+                                        </span>
+                                        <span *ngFor="let item of styles" class="checkbox">
+                                            <input [checked]="(filterParam && ('style_'+item.id) == filterParam) ? true : false"
+                                            (change)="changeSearch($event)" type="radio" name="radiogroup-style" id="styleId_{{item.id}}">
+                                            <label for="styleId_{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</label>
+                                        </span>
+                                    </div>
+                                </div>
+
+
+
+                            </div> <!--/filter-scroll-->
+                            <!-- Close filters on mobile / update filters-->
+                            <div class="toggle-filters-close btn btn-circle">
+                                <i class="icon icon-cross"></i>
+                            </div>
+
+                        </div> <!--/filters-->
+                    </div>
+
+                    <!--Right content-->
+
+                    <div class="col-lg-9">
+
+                        <!-- === Sort bar === -->
+
+                        <div class="sort-bar clearfix row">
+
+                            <div class="sort-results  col-sm-6" style="direction: ltr;"
+                            [ngStyle]="{'float':translateService.currentLang=='ar'?'right':'left'}">
+
+                                <!--Showing result per page-->
+                                <mat-paginator #paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[5,10,20]" 
+                                (page)="pagingEvent($event)">
+                                </mat-paginator>
+                            </div>
+
+
+
+                                <!--Grid-list view-->
+
+                                <span class="grid-list">
+                                   <!--
+                                    <a href="stores-grid.html"><i class="fa fa-th-large"></i></a>
+                                    <a href="stores-list.html"><i class="fa fa-align-justify"></i></a>  -->
+                                    <a href="javascript:void(0);" class="toggle-filters-mobile d-inline-block d-md-none">
+                                        <span class="spinner-grow spinner-grow-sm text-warning" role="status" aria-hidden="true"></span>
+                                        <i class="fa fa-sliders"></i>
+                                    </a>
+                                   
+                                </span>
+                            </div> <!--/sort-options-->
+                  
+
+                        <!--stores collection-->
+
+                        <div *ngIf="storeItems && storeItems.length>0" class="row">
+
+                            <!--store item-->
+
+                            <div *ngFor="let item of storeItems" class="col-12">
+                                <article style="padding:10px;">
+                                    
+                               
+                                    <div class="figure-list">
+                                        <div class="image">
+                                            <a routerLink="/store-detail/{{item.id}}">
+                                                <img src="{{imgUrl+item.image}}" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="text">
+                                            <h2 class="title h4">
+                                                <a routerLink="/store-detail/{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</a>
+                                            </h2>
+                                            <span class="description clearfix">
+                                                {{(translateService.currentLang=='ar')?item.bioar:item.bio}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                        </div> <!--/row-->
+                        
+                    </div> <!--/col-lg-9-->
+                </div>
+                </div><!--/row-->
+          
+
+        </section>
+
+       
+        <!-- ========================  Newsletter ======================== -->
+        
+  
+  <!----------------------------- Modal Form------------------------------->
+  <ng-template #storePopup let-modal>
+    <app-store-modal [modalContentType]="modalContentType" [selectedItem]="selectedItem"></app-store-modal>
+  </ng-template>
+  

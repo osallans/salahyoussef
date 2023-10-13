@@ -1,0 +1,31 @@
+
+<form  (ngSubmit)="onSubmit(loginForm,$event)" [formGroup]="loginForm">
+    <div class="d-flex justify-content-center">
+        <div class="col-md-3 login-card">
+          <h1 style="text-align:center;color:rgb(192, 175, 110);">
+            <img id="Image11" src="../assets/images/lock.png" class="lock-logo">&nbsp;LOGIN</h1>
+
+      <div class="form-group form-group-formatted" 
+      >
+        <label  class="required gray-label">Email</label>
+        <input id="txt_username" type="text" [ngClass]="{'required-field':formField('username').invalid && (formField('username').dirty || formField('username').touched)}" 
+        class="form-control input-lg" formControlName="username">
+      </div>
+      <div class="form-group form-group-formatted">
+      <label  class="required gray-label" >Password</label>
+      <input id="txt_password" type="password" [ngClass]="{'required-field':formField('password').invalid && (formField('password').dirty || formField('password').touched)}" 
+      class="form-control input-lg" formControlName="password">
+    </div>
+     <div class="row" style="padding-bottom:10px;">
+        <div class="col-md-12">
+           
+          <button [disabled]="!loginForm.valid" class="btn btn-success float-right" type="submit" >
+            Login
+          </button>
+        </div>
+      </div>
+ 
+</div>
+</div>
+
+  </form>

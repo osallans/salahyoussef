@@ -1,0 +1,156 @@
+<div class="modal-header">
+  <div class="modal-title">
+    <h4>{{ modalContentType }} Company</h4>
+    <span *ngIf="modalContentType=='Edit'">{{ company.companyName }}</span>
+  </div>
+  <button type="button" class="close" aria-label="Close" (click)="dismissModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form (ngSubmit)="onSubmitForm(createForm)" [formGroup]="createForm">
+  <div class="modal-body">
+    
+   <div class="row">
+    <!-------------------------------------------Company Name ----------------------------------------------------------->
+    <div class="col-md-6">
+        <label for="txt_full_name" class="required">Company Name</label>
+        <input id="txt_full_name" type="text" [ngClass]="{'required-field':formField('companyName').errors?.required && formField('companyName').touched}"
+         class="form-control input-lg" formControlName="companyName">
+    </div>
+    <!---------------------------- Address  ---------------------------------------->
+    <div class="col-md-6">
+      <label for="txt_full_name" class="required">Address</label>
+      <input id="txt_full_name" type="text" [ngClass]="{'required-field':formField('address').errors?.required && formField('address').touched}"
+       class="form-control input-lg" formControlName="address">
+    </div>
+  </div>
+
+  <br/>
+  <div class="row">
+    <!-------------------------------------------Approves Transaction ----------------------------------------------------------->   
+    <div class="col-md-6">
+      <label for="approvesTransaction" class="required">Approves Transaction</label>
+      <select class="form-control input-lg" id="approvesTransaction" formControlName="approvesTransaction" 
+      [ngClass]="{'required-field':formField('approvesTransaction').errors?.required && formField('approvesTransaction').touched}" >>
+        <option [ngValue]="1"> YES </option>
+        <option [ngValue]="0"> NO  </option>
+      </select>
+    </div> 
+  <!-------------------------------------------Phone ----------------------------------------------------------->
+  <div class="col-md-6">
+      <label for="txt_phone" class="required">Phone</label>
+      <input id="txt_phone" [ngClass]="{'required-field':formField('phone').errors?.required && formField('phone').touched}"
+       type="text" class="form-control input-lg" formControlName="phone"
+       NumbersOnly [allowDecimals]="false" [allowSign]="false" oninput="this.value = this.value.substr(0,14).toUpperCase()">
+    </div>
+ </div> 
+
+ <br/>
+ <div class="row">
+  <!-------------------------------------------Limit Value ----------------------------------------------------------->
+  <div class="col-md-6">
+    <label for="txt_limitValue" class="required">Limit Value</label>
+    <input id="txt_limitValue" [ngClass]="{'required-field':formField('limitValue').errors?.required && formField('limitValue').touched}"
+     type="text" class="form-control input-lg" formControlName="limitValue"
+     NumbersOnly [allowDecimals]="true" [allowSign]="false" oninput="this.value = this.value.substr(0,9).toUpperCase()">
+  </div>
+  <!-------------------------------------------Limit Percent ----------------------------------------------------------->
+  <div class="col-md-6">
+    <label for="txt_limitPercent" class="required">Limit Percent</label>
+    <input id="txt_limitPercent" [ngClass]="{'required-field':formField('limitPercent').errors?.required && formField('limitPercent').touched
+    ,'invalid-field': formField('limitPercent').errors?.max}"
+     type="text" class="form-control input-lg" formControlName="limitPercent"
+     NumbersOnly [allowDecimals]="false" [allowSign]="false" oninput="this.value = this.value.substr(0,2).toUpperCase()">
+  </div>
+</div> 
+
+
+<br/>
+<div class="row">
+  <!-------------------------------------------Request Handling Day Fixed ----------------------------------------------------------->   
+  <div class="col-md-6">
+    <label for="requestHandlingDayFixed" class="required">Request Handling Day Fixed</label>
+    <select class="form-control input-lg" id="requestHandlingDayFixed" (change)="onChange()" formControlName="requestHandlingDayFixed" 
+    [ngClass]="{'required-field':formField('requestHandlingDayFixed').errors?.required && formField('requestHandlingDayFixed').touched}" >
+      <option [ngValue]="1"> YES </option>
+      <option [ngValue]="0"> NO  </option>
+    </select>
+  </div> 
+  <!-------------------------------------------Request Handling Payroll Month is Current ----------------------------------------------------------->   
+  <div class="col-md-6" *ngIf="formField('requestHandlingDayFixed').value==1">
+      <label for="requestHandlingPayrollMonthIsCurrent" class="required">From Payroll Off</label>
+      <select class="form-control input-lg" id="requestHandlingPayrollMonthIsCurrent" formControlName="requestHandlingPayrollMonthIsCurrent" 
+      [ngClass]="{'required-field':formField('requestHandlingPayrollMonthIsCurrent').errors?.required && formField('requestHandlingPayrollMonthIsCurrent').touched}" >
+        <option [ngValue]="1"> Month of submission date </option>
+        <option [ngValue]="0"> Month + 1 of submission date  </option>
+      </select>
+  </div> 
+</div>
+  <br/>
+
+<div *ngIf="formField('requestHandlingDayFixed').value==0" class="row">
+ <!-------------------------------------------PayrollDay Start ----------------------------------------------------------->
+ <div class="col-md-6">
+   <label for="txt_payrollDayStart" class="required">PayrollDay Start</label>
+   <input id="txt_payrollDayStart" [ngClass]="{'required-field':formField('payrollDayStart').errors?.required && formField('payrollDayStart').touched
+   ,'invalid-field': formField('payrollDayStart').errors?.max}"
+    type="text" class="form-control input-lg" formControlName="payrollDayStart"
+    NumbersOnly [allowDecimals]="false" [allowSign]="false" oninput="this.value = this.value.substr(0,2).toUpperCase()">
+ </div>
+ <!-------------------------------------------PayrollDay End ----------------------------------------------------------->
+ <div class="col-md-6">
+   <label for="txt_payrollDayEnd" class="required">PayrollDay End</label>
+   <input id="txt_payrollDayEnd" [ngClass]="{'required-field':formField('payrollDayEnd').errors?.required && formField('payrollDayEnd').touched
+   ,'invalid-field': formField('payrollDayEnd').errors?.max}"
+    type="text" class="form-control input-lg" formControlName="payrollDayEnd"
+    NumbersOnly [allowDecimals]="false" [allowSign]="false" oninput="this.value = this.value.substr(0,2).toUpperCase()">
+ </div>
+</div> 
+<div *ngIf="formField('requestHandlingDayFixed').value==0" class="row">
+  <label class="labeldiv"
+  [ngStyle]="((!formField('payrollDayStart').value || !formField('payrollDayEnd').value )
+            || (formFieldNumber('payrollDayStart') < formFieldNumber('payrollDayEnd'))) && {'display':'none'}">Payroll cycle is across two months</label>
+</div>
+<br/>
+<div class="row">
+ <!-------------------------------------------Earn Day ----------------------------------------------------------->
+ <div class="col-md-6">
+   <label for="txt_earnDay" class="required">Earn Day</label>
+   <input id="txt_earnDay" [ngClass]="{'required-field':formField('earnDay').errors?.required && formField('earnDay').touched
+   ,'invalid-field': formField('earnDay').errors?.max}"
+    type="text" class="form-control input-lg" formControlName="earnDay"
+    NumbersOnly [allowDecimals]="false" [allowSign]="false" oninput="this.value = this.value.substr(0,2).toUpperCase()">
+ </div>
+ <!-------------------------------------------requestHandling Day ----------------------------------------------------------->
+ <div class="col-md-6" *ngIf="formField('requestHandlingDayFixed').value==1">
+   <label for="txt_requestHandlingDay" class="required">Request Handling Day</label>
+   <input id="txt_requestHandlingDay" [ngClass]="{'required-field':formField('requestHandlingDay').errors?.required && formField('requestHandlingDay').touched
+   ,'invalid-field': formField('requestHandlingDay').errors?.max}"
+    type="text" class="form-control input-lg" formControlName="requestHandlingDay"
+    NumbersOnly [allowDecimals]="false" [allowSign]="false" oninput="this.value = this.value.substr(0,2).toUpperCase()">
+ </div>
+</div> 
+<br/>
+
+  
+  </div>
+  <!-------------------------------------------Footer ----------------------------------------------------------->
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col-md-9 row">
+
+        <div class="col-md-6">
+          <div class="div-req"></div> = required
+        </div>
+        <div class="col-md-6">
+          <div class="div-invalidvalue"></div> = invalid
+        </div>
+      </div>
+      <div class="col-md-3">
+        <button [disabled]="!createForm.valid || createForm.pristine" class="btn btn-success float-right" type="submit">
+          Save Entry
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

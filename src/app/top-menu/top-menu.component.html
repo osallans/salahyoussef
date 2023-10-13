@@ -1,0 +1,373 @@
+<nav>
+    <div class="container">
+  
+      <a routerLink="/home"  class="logo"><img src="assets/images/logo.JPG" alt=""  width="130" height="80"/></a>
+  
+      <!-- ==========  Top navigation ========== -->
+  
+      <div class="navigation navigation-top clearfix">
+          <ul>
+              <!--add active class for current page-->
+              <li class="left-side"><a routerLink="/home" class="logo-icon"><img src="assets/images/logo.JPG" alt="Alternate Text" width="80" height="80"/></a></li>
+              <li><a href="javascript:void(0);" [hidden]="authenticationService.currentUserValue" class="open-login"><i class="icon icon-enter"></i>  &nbsp; <span translate>sign_in</span></a></li>
+              <li><a href="javascript:void(0);" [hidden]="!authenticationService.currentUserValue" class="open-user"><i class="icon icon-user"></i></a></li>
+              <!--<li><a href="javascript:void(0);" [hidden]="!authenticationService.currentUserValue" class="open-cart display-showcase"><i class="icon icon-briefcase"></i> <span *ngIf="cartItems && cartItems.length>0">{{cartItems.length}}</span></a></li>-->
+          </ul>
+      </div>
+  
+      <!-- ==========  Main navigation ========== -->
+  
+      <div class="navigation navigation-main">
+          <a  class="open-login" [hidden]="authenticationService.currentUserValue" ><i class="icon icon-enter"></i></a>
+          <a  class="open-user"  [hidden]="!authenticationService.currentUserValue"><i class="icon icon-user"></i></a>
+          <!--a  class="open-cart display-showcase"  [hidden]="!authenticationService.currentUserValue"><i class="icon icon-briefcase"></i> <span><span *ngIf="cartItems && cartItems.length>0">{{cartItems.length}}</span></span></a>-->
+          <a  class="open-menu"><i class="icon icon-menu"></i></a>
+  
+          <div class="floating-menu" #floatingDiv 
+          [ngClass]="{
+              'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}">
+              <!--mobile toggle menu trigger-->
+              <div class="close-menu-wrapper">
+                  <span class="close-menu"><i class="icon icon-cross"></i></span>
+              </div>
+              <ul>
+                  <li>
+                    <a routerLink="/home" translate>menu_home</a>
+                  </li>
+                 <!--
+                  <li>
+                    <a routerLink="/about" translate>menu_about</a>
+                  </li>
+                  <li>
+                    <a routerLink="/faq" translate>menu_faq</a>
+                  </li>
+                  -->
+                  <!-- <li><a routerLink="/products-list" translate>menu_products</a></li> -->
+                  <li>
+                      <a class="menu-anchor"  translate>menu_categories <span class="open-dropdown" [ngStyle]="{'right':translateService.currentLang=='ar'? '90%':'0'}"><i class="fa fa-angle-down"></i></span></a>
+                      <div class="navbar-dropdown navbar-dropdown-single">
+                          <div class="navbar-box">
+                              <div class="box-full">
+                                  <div *ngIf="categories && categories.length>0" class="box clearfix">
+                                      <ul>
+                                          <!-- li class="label">Browse by Category</li -->
+                                          <li *ngFor="let item of categories">
+                                              <a class="menu-a" (click)='goToPage("cat",item.id)'>{{(translateService.currentLang=='ar')?item.namear:item.name}}</a>
+                                         </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                  <li>
+                      <a routerLink="/stores-list" translate>menu_stores 
+                    <!-- 
+                        <span class="open-dropdown"><i class="fa fa-angle-down"></i></span>-->
+                    </a>
+                      <!-- <div class="navbar-dropdown navbar-dropdown-single">
+                          <div class="navbar-box">
+                              <div class="box-full">
+                                  <div class="box clearfix">
+                                      <ul>
+                                          <li *ngFor="let item of stores">
+                                            <a (click)='goToPage("store",item.id)'>{{(translateService.currentLang=='ar')?item.namear:item.name}}</a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    -->
+                  </li>
+                  <li >
+                      <a class="menu-anchor"  translate>menu_rooms <span class="open-dropdown" [ngStyle]="{'right':translateService.currentLang=='ar'? '90%':'0'}"><i class="fa fa-angle-down"></i></span></a>
+                      <div class="navbar-dropdown navbar-dropdown-single">
+                          <div class="navbar-box">
+                              <div class="box-full">
+                                  <div *ngIf="rooms && rooms.length>0" class="box clearfix">
+                                      <ul>
+                                          <li *ngFor="let item of rooms">
+                                            <a (click)='goToPage("room",item.id)'>{{(translateService.currentLang=='ar')?item.namear:item.name}}</a>
+                                       </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                  <li >
+                    <a class="menu-anchor"  translate>modal_style <span class="open-dropdown" [ngStyle]="{'right':translateService.currentLang=='ar'? '90%':'0'}"><i class="fa fa-angle-down"></i></span></a>
+                    <div class="navbar-dropdown navbar-dropdown-single">
+                        <div class="navbar-box">
+                            <div class="box-full">
+                                <div *ngIf="styles && styles.length>0" class="box clearfix">
+                                    <ul>
+                                        <li *ngFor="let item of styles">
+                                          <a (click)='goToPage("style",item.id)'>{{(translateService.currentLang=='ar')?item.namear:item.name}}</a>
+                                     </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                 <li class="display-showcase">
+                    <a routerLink="/all-showcases" translate>showcase</a>
+                  </li>
+                  <li><a routerLink="/promotions" translate>promo</a></li>
+                  <li><a routerLink="/contact" translate>contact_us</a></li>
+                  <li><a routerLink="/blog" translate>blog</a></li>
+                  
+                  
+                <li class="nav-settings" >
+                    <a class="menu-anchor"><span id="language_holder" class="nav-settings-value">{{languageHolder}}</span> <span [ngStyle]="{'right':translateService.currentLang=='ar'? '90%':'0'}" class="open-dropdown"><i class="fa fa-angle-down"></i></span></a>
+                    <div class="navbar-dropdown navbar-dropdown-single">
+                        <div class="navbar-box">
+                            <div class="box-full">
+                                <div class="box clearfix">
+                                    <ul class="nav-settings-list">
+                                        <li><a (click)="switchLanguage('en')">ENG</a></li>
+                                        <li><a (click)="switchLanguage('ar')">عربي</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                  <!--
+                  <li>
+                      <a href="index.html">Browse Shop  <span class="open-dropdown"><i class="fa fa-angle-down"></i></span></a>
+                      <div class="navbar-dropdown">
+                          <div class="navbar-box">
+                              <div class="box-lg">
+                                  <div class="box clearfix">
+                                      <div class="row">
+                                          <div class="col-lg-4">
+                                              <ul>
+                                                  <li class="label">Explore by Category</li>
+                                                  <li><a href="products-list.html">Lighting</a></li>
+                                                  <li><a href="products-list.html">Gardens</a></li>
+                                                  <li><a href="products-list.html">Outdoor</a></li>
+                                                  <li><a href="products-list.html">Decorations</a></li>
+                                                  <li><a href="products-list.html">Gardens</a></li>
+                                                  <li><a href="products-list.html">Outdoor</a></li>
+                                                  <li><a href="products-list.html">Decorations</a></li>
+                                                  <li class="more"><a href="category.html"><i class="icon icon-chevron-right"></i> More</a></li>
+                                              </ul>
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <ul>
+                                                  <li class="label">Explore by Stores</li>
+                                                  <li><a href="products-grid.html">A&W</a></li>
+                                                  <li><a href="products-grid.html">Kian</a></li>
+                                                  <li><a href="products-grid.html">La-z- Boy</a></li>
+                                                  <li><a href="products-grid.html">Ashley</a></li>
+                                                  <li><a href="products-grid.html">Kian</a></li>
+                                                  <li><a href="products-grid.html">La-z- Boy</a></li>
+                                                  <li><a href="products-grid.html">Ashley</a></li>
+                                                  <li class="more"><a href="stores.html"><i class="icon icon-chevron-right"></i> More</a></li>
+                                              </ul>
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <ul>
+                                                  <li class="label">Explore by Room</li>
+                                                  <li><a href="products-list.html">Living Room</a></li>
+                                                  <li><a href="products-list.html">Bedroom</a></li>
+                                                  <li><a href="products-list.html">TV Room</a></li>
+                                                  <li><a href="products-list.html">Toilets</a></li>
+                                                  <li><a href="products-list.html">Bedroom</a></li>
+                                                  <li><a href="products-list.html">TV Room</a></li>
+                                                  <li><a href="products-list.html">Toilets</a></li>
+                                                  <li class="more"><a href="category.html"><i class="icon icon-chevron-right"></i> More</a></li>
+                                              </ul>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="box-sm">
+                                  <div class="image">
+                                      <img src="assets/images/m-1.jpg" alt="Alternate Text" />
+                                  </div>
+                                  <div class="box">
+                                      <div class="h4">Premium quality</div>
+                                      <div class="clearfix">
+                                          <p>Homes that differ in terms of style, concept and architectural solutions have been furnished by Furniture Factory. These spaces tell of an international lifestyle that expresses modernity, research and a creative spirit.</p>
+                                          <a class="btn btn-clean btn-big" href="products-list.html">Shop now</a>
+                                      </div>
+                                  </div>
+                              </div>
+  
+                          </div>
+                      </div>
+                  </li>
+                -->
+                  
+              </ul>
+          </div>
+      </div>
+  
+      <!-- ==========  Search wrapper ========== -->
+      <!--
+      <div class="search-wrapper">
+          <input class="form-control" placeholder="Search..." />
+          <a href="./products-list.html" class="btn btn-outline-dark btn-sm">Search now</a>
+      </div>
+       -->
+
+      <!-- ========== [hidden]="authenticationService.currentUserValue"  Login wrapper ========== -->
+      <div id="login-wrapper"  class="login-wrapper"
+       [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}" 
+       [hidden]="authenticationService.currentUserValue" >
+          <div class="h5" translate>sign_in</div>
+          <form [formGroup]="loginForm">
+      
+              <div class="form-group">
+                  <input type="email" class="form-control" id="txt_username" type="text"  
+                  formControlName="username" placeholder="Email"
+                  placeholder="{{(translateService.currentLang=='ar')?' البريد الإلكتروني':'Email  '}}">
+              </div>
+              <div class="form-group">
+                  <input type="password" id="txt_password" type="password" 
+                  formControlName="password" class="form-control" id="exampleInputPassword1"
+                  placeholder="{{(translateService.currentLang=='ar')?' أدخل كلمة المرور':'Password  '}}">
+              </div>
+              <div class="form-group">
+                  <a routerLink="/reset-password" class="login-closure open-popup btn btn-main btn-sm" translate>forgot_password</a>
+                 <br/> <a routerLink="/register" class="login-closure open-popup btn btn-main btn-sm" translate>no_account</a>
+              </div>
+              
+              <button (click)="onSubmit(loginForm)"   type="button" class="btn btn-block btn-outline-primary" translate>sign_in</button>
+              <button type="button" (click)="loginWithFacebook()" class="btn btn-primary btn-block">Sign in with Facebook</button>
+            </form>
+             
+      </div>
+         <!-- ==========  Login wrapper ========== -->
+         <div  class="user-wrapper" 
+         [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}"
+         [hidden]="!authenticationService.currentUserValue" >
+            <div *ngIf="authenticationService.currentUserValue" class="h5">{{authenticationService.currentUserValue.name}}</div>
+            <hr/>
+            <div class="form-group">
+                <a  routerLink="/change-password" class="open-popup btn btn-main btn-sm user-closure" translate>change_password</a>
+                <hr/>
+                <a  routerLink="/show-cases" class="open-popup btn btn-main btn-sm user-closure" translate>show_cases</a>
+                <hr/>
+                <a  routerLink="/favourites" class="open-popup btn btn-main btn-sm user-closure" translate>favourite_items</a>
+                <hr/>
+                <a (click)="logout()" style="cursor: pointer;" class="open-popup btn btn-main btn-sm user-closure" translate>logout</a>
+            </div>
+           
+        </div>
+      <!-- ==========  Cart wrapper ========== -->
+  
+      <div [hidden]="!authenticationService.currentUserValue"
+       class="cart-wrapper" 
+       [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}">
+          <div class="checkout">
+              <div class="clearfix">
+  
+                  <!--cart item-->
+                  <div *ngIf="!cartItems || cartItems.length==0" class="cart-block cart-block-item clearfix">
+                    
+                    <div class="cart-empty">
+                        <div translate>Show case is empty</div>
+                    </div>
+                  </div>
+                  <div *ngIf="cartItems" class="row">
+  
+                      <div *ngFor="let item of cartItems" class="cart-block cart-block-item clearfix">
+                          <div class="image">
+                            <a routerLink="/product-detail/{{item.id}}">
+                                <img src="{{imgUrl+item.image}}" alt="" />
+                            </a>
+                          </div>
+                          <div class="title">
+                              <div><a routerLink="/product-detail/{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</a></div>
+                              <small>{{(translateService.currentLang=='ar')?item.materialar:item.material}}</small>
+                          </div>
+                          <!--
+                          <div class="quantity">
+                              <input type="number" value="2" class="form-control form-quantity" />
+                          </div>
+                          -->
+                          <div class="price">
+                              <span class="final">{{item.price | number:'1.0-0'}} <span translate>currency</span></span>
+                              <span *ngIf="(item.discount>0)" class="discount">{{(item.price * (100-item.discount) / 100) | number:'1.0-0'}} <span translate>currency</span></span>
+                          </div>
+                          <!--delete-this-item-->
+                          <span (click)="removeProductFromCart(item.id)"
+                          [ngStyle]="{'right':translateService.currentLang=='ar'? '95%':'0'}" class="icon icon-cross icon-delete"></span>
+                      </div>
+  
+                  </div>
+  
+                  <hr />
+  
+                  <!--cart prices -->
+                  <!--
+                  <div class="clearfix">
+                      <div class="cart-block cart-block-footer clearfix">
+                          <div>
+                              <strong>Discount 15%</strong>
+                          </div>
+                          <div>
+                              <span>EGP 159,00</span>
+                          </div>
+                      </div>
+  
+                      <div class="cart-block cart-block-footer clearfix">
+                          <div>
+                              <strong>Shipping</strong>
+                          </div>
+                          <div>
+                              <span>EGP 30,00</span>
+                          </div>
+                      </div>
+  
+                      <div class="cart-block cart-block-footer clearfix">
+                          <div>
+                              <strong>VAT</strong>
+                          </div>
+                          <div>
+                              <span>EGP 59,00</span>
+                          </div>
+                      </div>
+                  </div>
+  
+                  <hr />
+                -->
+                  <!--cart final price -->
+                <!--
+                  <div class="clearfix">
+                      <div class="cart-block cart-block-footer clearfix">
+                          <div>
+                              <strong>Total</strong>
+                          </div>
+                          <div>
+                              <div class="h4 title">EGP 1259,00</div>
+                          </div>
+                      </div>
+                  </div>
+                -->
+  
+                  <!--cart navigation -->
+  
+                  <div class="cart-block-buttons clearfix">
+                      <div class="row">
+                          <!--
+                          <div class="col-sm-6">
+                              <a href="products-list.html" class="btn btn-outline-info">Continue shopping</a>
+                          </div>
+                          -->
+                          <div class="col-sm-12" [ngStyle]="{'text-align':translateService.currentLang=='ar'?'left':'right'}">
+                              <button (click)="submitShowCase" [hidden]="!cartItems || cartItems.length==0" class="btn btn-outline-warning" translate><span class="icon icon-briefcase"></span> submit</button>
+                          </div>
+                      </div>
+                  </div>
+  
+              </div>
+          </div>
+      </div>
+  </div>
+  </nav>

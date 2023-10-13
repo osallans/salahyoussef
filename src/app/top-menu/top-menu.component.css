@@ -1,0 +1,12 @@
+nav .navigation-main .navbar-dropdown .navbar-box ul > li > a
+{
+    cursor: pointer;
+}
+nav .navigation-main .navbar-dropdown .navbar-box ul > li > a:hover
+{
+    color: orange;
+}
+nav .navigation-top > ul {
+    text-align: right;
+    height: 90px;
+}

@@ -1,0 +1,55 @@
+ <!-- ========================  About ======================== -->
+
+ <section class="blog blog-category blog-animated pt-0">
+
+
+
+                    <!--Blog item-->
+
+
+
+
+
+
+    <div
+    [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}" 
+    class="container">
+        <!--Showing result per page-->
+
+   
+
+        <article class="article-table" [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"  *ngFor="let blog of blogs"  >
+            <a routerLink="/article/{{blog.id}}">
+                <!--
+                <div class="image" style="background-image:url(assets/images/product-1.jpg)">
+                    <img src="assets/images/product-1.jpg" alt="" />
+                </div>
+                -->
+                <div class="text">
+                    <div class="title">
+                        <p><i class="fa fa-calendar"></i>  {{blog.dateadded | date: 'dd.MM.yyyy'}}</p>
+                        <h2 class="h5">{{(translateService.currentLang=='ar')?blog.titlear:blog.title}}</h2>
+                    </div>
+                    <div class="text-intro">
+                        <div [innerHtml]="(translateService.currentLang=='ar')?blog.shortbodyar.substring(0,200)+'...':blog.shortbody.substring(0,200)+'...'"></div> 
+                    </div>
+                </div>
+            </a>
+        </article>
+
+
+        
+    </div>
+    
+    
+    
+    
+    <div class="container">
+        <div class="col-12" style="display: flex; justify-content: flex-end;width:100%;">
+        <mat-paginator [ngStyle]="{'text-align':'right'}"
+         #paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize"  (page)="pagingEvent($event)">
+        </mat-paginator>
+    </div>
+    </div>
+   <br/>
+</section>

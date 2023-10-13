@@ -1,0 +1,71 @@
+<div class=" m-3" style="padding-top: 3%;" >
+    <div class="row justify-content-start">
+        <div class="col-md-6">
+            <h2 style="line-height: 45px">Welcome to <br>Khazna administration portal</h2>
+            <p>Khazna is an online solution for Extending digital financial services to underbanked Egyptians </p>
+        </div>
+    </div>
+    <div class="row justify-content-between">
+        <div class="col-5"  class="alert alert-danger" style="margin:auto; font-size:large;" *ngIf="false"> <i class="fa fa-warning"></i> &nbsp; Access is required to view content </div>
+        <div class="col-5" >
+            <div *ngIf="authenticationService.currentEmployeeValue" class="card">
+                <div class="content">
+                    <div class="front">
+                        <span><img src="../assets/images/users.png" height="90px" class="card-icon"></span>
+                    </div>
+                    <div class="back">
+                        <div class="back-half">
+                            <a routerLink="/users" >View Users</a>
+                        </div>
+                        <div class="back-secondhalf">
+                            <a routerLink="/usersimport" >Import Users</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div *ngIf="authenticationService.currentEmployeeValue.role=='admin'" class="card">
+                <div class="content">
+                    <div class="front">
+                        <span><img src="../assets/images/companies.png" height="90px" class="card-icon"></span>
+                    </div>
+                    <div class="back">
+                        <div class="back-half">
+                            <a routerLink="/companies" >Companies</a>
+                        </div>
+                        <div class="back-secondhalf">
+                            <a routerLink="/tiers" >Companies Tiers</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div *ngIf="authenticationService.currentEmployeeValue" class="card">
+                <div class="content">
+                    <div class="front">
+                        <span><img src="../assets/images/transactions.png" height="90px" class="card-icon"></span>
+                    </div>
+                    <div class="back">
+                            <a routerLink="/transactions" >Transactions</a>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="authenticationService.currentEmployeeValue.role=='admin'" class="card">
+                <div class="content">
+                    <div class="front">
+                        <span><img src="../assets/images/employees.png" height="90px" class="card-icon"></span>
+                    </div>
+                    <div class="back">
+                        <a routerLink="/employees" >Employees</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <img src="../assets/images/khazna_big.png" style="width:40vw;">
+        </div>
+    </div>
+</div>

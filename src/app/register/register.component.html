@@ -1,0 +1,169 @@
+<!-- ========================  Login & register ======================== -->
+
+<section class="login">
+
+
+    <!--Content-->
+
+    <div class="container" >
+
+        <div class="row">
+
+            <!-- === left content === -->
+
+            <div class="col-md-6 offset-md-3">
+
+                <div class="login-wrapper" [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+                'leftToRight':translateService.currentLang=='en'}">
+
+                    <!--signin-->
+
+                    <div class="login-block login-block-signin">
+
+                        <div class="h4" translate>sign_in <a href="javascript:void(0);" class="btn btn-main btn-sm btn-register"
+                            [ngClass]="{'pull-left':translateService.currentLang=='ar',
+            'pull-right':translateService.currentLang!='ar'}"
+                            translate>create_account</a></div>
+
+                        <hr />
+                        <form  (ngSubmit)="login(loginForm,$event)" [formGroup]="loginForm">
+                        <div class="row">
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input type="text" value="" class="form-control" 
+                                    [ngClass]="{'invalid-field': formLoginField('email').errors?.pattern ,
+                                    'required-field':formLoginField('email').invalid && 
+                                    (formLoginField('email').dirty || formLoginField('email').touched)}"
+                                    formControlName="email"
+                                    [attr.placeholder]="translateService.instant('email')">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input type="password" value="" class="form-control" formControlName="password"
+                                    [ngClass]="{'required-field':formLoginField('password').invalid && (formLoginField('password').dirty || formLoginField('password').touched)}" 
+                                    [attr.placeholder]="translateService.instant('password')">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                     <a routerLink="forgot-password" translate>forgot_password</a>
+                            </div>
+
+                            <div class="col-12">
+                                <hr />
+                                <button
+                                [disabled]="!loginForm.valid || loginForm.pristine" class="btn btn-primary" type="submit"
+                                translate>sign_in</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div> <!--/signin-->
+                    <!--signup-->
+
+                    <div class="login-block login-block-signup">
+
+                        <div class="h4" translate>register_now
+                            <a href="javascript:void(0);" class="btn btn-main btn-sm btn-login"
+                            [ngClass]="{'pull-left':translateService.currentLang=='ar',
+            'pull-right':translateService.currentLang!='ar'}" translate>already_member</a></div>
+
+                        <hr />
+                        <form  (ngSubmit)="register(registerForm,$event)" [formGroup]="registerForm">
+                               
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" value="" class="form-control" 
+                                    [ngClass]="{'required-field':formRegisterField('firstname').invalid && 
+                                    (formRegisterField('firstname').dirty || formRegisterField('firstname').touched)}" 
+                                    formControlName="firstname" minlength="3"
+                                    placeholder="{{(translateService.currentLang=='ar')?'*الاسم الأول':'First Name *'}}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" value="" class="form-control" 
+                                    [ngClass]="{'required-field':formRegisterField('lastname').invalid && 
+                                    (formRegisterField('lastname').dirty || formRegisterField('lastname').touched)}" 
+                                    formControlName="lastname" minlength="3"
+                                    placeholder="{{(translateService.currentLang=='ar')?'*اسم العائلة':'Last Name *'}}">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" value="" class="form-control" 
+                                    formControlName="mobile"
+                                    NumbersOnly [allowDecimals]="false" [allowSign]="false" oninput="this.value = this.value.substr(0,11).toUpperCase()"
+                                    placeholder="{{(translateService.currentLang=='ar')?'الموبايل':'Mobile '}}">
+                                </div>
+                            </div>
+
+                            
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" value="" class="form-control" 
+                                    formControlName="email"
+                                    [ngClass]="{'invalid-field': formRegisterField('email').errors?.pattern ,
+                                    'required-field':formRegisterField('email').invalid && 
+                                    (formRegisterField('email').dirty || formRegisterField('email').touched)}" type="email"
+                                    placeholder="{{(translateService.currentLang=='ar')?'*البريد الإلكتروني':'Email *'}}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="password" value="" class="form-control" 
+                                    [ngClass]="{'required-field':formRegisterField('password').invalid && 
+                                    (formRegisterField('password').dirty || formRegisterField('password').touched)}" 
+                                    formControlName="password"
+                                    minlength="8"
+                                    placeholder="{{(translateService.currentLang=='ar')?'*أدخل كلمة المرور':'Password *'}}">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="password" value="" class="form-control" 
+                                    [ngClass]="{'required-field':formRegisterField('confirmpassword').invalid && 
+                                    (formRegisterField('confirmpassword').dirty || formRegisterField('confirmpassword').touched)}" 
+                                    formControlName="confirmpassword" minlength="8"
+                                    placeholder="{{(translateService.currentLang=='ar')?'*تأكيد كلمة المرور':'Confirm password *'}}">
+                                </div>
+                            </div>
+                            <!--
+                            <div class="col-md-12">
+                                <hr />
+                                <span class="checkbox">
+                                    <input type="checkbox" id="checkBoxId1">
+                                    <label for="checkBoxId1">I have read and accepted the <a href="#">terms</a>, as well as read and understood our terms of <a href="#">business contidions</a></label>
+                                </span>
+                                <span class="checkbox">
+                                    <input type="checkbox" id="checkBoxId2">
+                                    <label for="checkBoxId2">Subscribe to exciting newsletters and great tips</label>
+                                </span>
+                                <hr />
+                            </div>
+                            -->
+                            <div class="col-md-12">
+                                <button
+                                [disabled]="!registerForm.valid || registerForm.pristine" class="btn btn-outline-dark" type="submit"
+                                translate>create_account</button>
+                           </div>
+
+                        </div>
+                    </form>
+                    </div> <!--/signup-->
+                
+                </div> <!--/login-wrapper-->
+
+            </div> <!--/col-md-6-->
+
+        </div>
+
+    </div>
+</section>
+
+
