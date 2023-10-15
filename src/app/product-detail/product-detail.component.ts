@@ -120,15 +120,16 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getProductById(id).subscribe((data: any) => {
       console.log(data);
       this.product=data;
+      
       /////////////////////FB Links///////////////////////
-      let producturl='https://www.facebook.com/plugins/share_button.php?href='+encodeURIComponent(environment.websiteUrl+'/product-detail/'+this.product.id)+'&layout=button&size=small&appId='+environment.facebookAppId+'&width=67&height=20';
-      this.fbProductUrl=this.sanitizer.bypassSecurityTrustResourceUrl(producturl);
-      let storeurl='https://www.facebook.com/plugins/share_button.php?href='+encodeURIComponent(environment.websiteUrl+'/store-detail/'+this.product.storeid)+'&layout=button&size=small&appId='+environment.facebookAppId+'&width=67&height=20';
-      this.fbStoreUrl=this.sanitizer.bypassSecurityTrustResourceUrl(storeurl);
+      // let producturl='https://www.facebook.com/plugins/share_button.php?href='+encodeURIComponent(environment.websiteUrl+'/product-detail/'+this.product.id)+'&layout=button&size=small&appId='+environment.facebookAppId+'&width=67&height=20';
+      // this.fbProductUrl=this.sanitizer.bypassSecurityTrustResourceUrl(producturl);
+      // let storeurl='https://www.facebook.com/plugins/share_button.php?href='+encodeURIComponent(environment.websiteUrl+'/store-detail/'+this.product.storeid)+'&layout=button&size=small&appId='+environment.facebookAppId+'&width=67&height=20';
+      // this.fbStoreUrl=this.sanitizer.bypassSecurityTrustResourceUrl(storeurl);
         
       ////////////////////////////////////////////////////
-      this.getProductImages(this.product.id);
-      this.getStoreById(this.product.storeid);
+    this.getProductImages(this.product.id);
+      //this.getStoreById(this.product.storeid);
       this.spinner.hide();
         },response => {
           this.spinner.hide();
@@ -163,7 +164,7 @@ getProductImages(id)
     //////////////////////
     this.productService.getProductImagesById(id).subscribe((data: any) => {
     this.imgUrl=environment.apiUrl.substr(0,environment.apiUrl.length-1)+data.stats.imagepath_productpic;
-    this.productImages.push(this.imgUrl+this.product.image);
+    //this.productImages.push(this.imgUrl+this.product.image);
 
     for(let i=0;i<data.results.length;i++)
     this.productImages.push(environment.apiUrl.substr(0,environment.apiUrl.length-1)+data.stats.imagepath_productpic+data.results[i].image);//data.results[i].image);
@@ -176,28 +177,28 @@ getProductImages(id)
   });
 }
 ////////////////////////////////////////////////////////////////////////////////
-getStoreById(id)
-{
-  this.storeService.getStoreById(id).subscribe((data: any) => {
-    this.storeImgUrl=environment.apiUrl.substr(0,environment.apiUrl.length-1)+data.stats.imagepath_store;
-    this.store=data.results?data.results:data;
-      },response => {
-        console.error(response);
-   });
+// getStoreById(id)
+// {
+//   this.storeService.getStoreById(id).subscribe((data: any) => {
+//     this.storeImgUrl=environment.apiUrl.substr(0,environment.apiUrl.length-1)+data.stats.imagepath_store;
+//     this.store=data.results?data.results:data;
+//       },response => {
+//         console.error(response);
+//    });
 
-   this.storeService.getBranchesById(id).subscribe((data: any) => {
-    this.storeBranches=data.results?data.results:data;
-    console.log(this.storeBranches);
-  },response => {
-    console.error(response);
-});
+//    this.storeService.getBranchesById(id).subscribe((data: any) => {
+//     this.storeBranches=data.results?data.results:data;
+//     console.log(this.storeBranches);
+//   },response => {
+//     console.error(response);
+// });
 
-this.storeService.getStoreStyles(id).subscribe((data: any) => {
-  this.storeStyles=data.results?data.results:data;
-},response => {
-  console.error(response);
-});
-}
+// this.storeService.getStoreStyles(id).subscribe((data: any) => {
+//   this.storeStyles=data.results?data.results:data;
+// },response => {
+//   console.error(response);
+// });
+// }
 
 scroll() {
   let el = document.getElementById('storesection');

@@ -13,7 +13,7 @@ export class ProductService {
 
   getProducts(productSearchObj: ProductSearch): Observable<Product[]> {
     let search:String;
-    search='page='+productSearchObj.page+'&pagesize='+productSearchObj.pagesize+"&isactive=1";
+    search='page='+productSearchObj.page+'&pagesize='+productSearchObj.pagesize+"&isactive=0";
     search+=productSearchObj.orderfield?"&orderfield="+productSearchObj.orderfield:"";
     search+=productSearchObj.orderdir?"&orderdir="+productSearchObj.orderdir:"";
     search+=productSearchObj.pricemin?"&pricemin="+productSearchObj.pricemin:"";
@@ -26,6 +26,7 @@ export class ProductService {
     search+=productSearchObj.districtid?"&districtid="+productSearchObj.districtid:"";
     search+=productSearchObj.isfeatured?"&isfeatured="+productSearchObj.isfeatured:"";
     search+=productSearchObj.specialoffers?"&specialoffers="+productSearchObj.specialoffers:"";
+    console.log(search);
     return this.httpService.getHTTPRequest('api/product?'+search)
       .pipe(map((responseData: Product[]) => responseData));
   }
@@ -65,7 +66,7 @@ export class ProductService {
        .pipe(map((responseData: Product) => responseData));
    }
    getProductImagesById(id: Number): Observable<any> {
-    return this.httpService.getHTTPRequest('api/product/'+id+'/productpic')
+    return this.httpService.getHTTPRequest('api/productpic?productid='+id)
        .pipe(map((responseData: Product) => responseData));
    }
 }

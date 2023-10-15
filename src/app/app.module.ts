@@ -18,20 +18,9 @@ import { LoginComponent } from './login/login.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BasicAuthInterceptor } from './shared/services/basic-auth.interceptor';
 import { ErrorInterceptor } from './shared/services/error.interceptor';
-import { CompanyService } from './company/company.service';
 import { NumbersOnly } from './shared/commonFunctions/numbersOnly.directive';
-import { CompanyListComponent } from './company/company-list/company-list.component';
-import { CompanyAddComponent } from './company/company-add/company-add.component';
-import { CompanyTierAddComponent } from './company-tier/company-tier-add/company-tier-add.component';
-import { CompanyTierListComponent } from './company-tier/company-tier-list/company-tier-list.component';
-import { EmployeeAddComponent } from './employee/employee-add/employee-add.component';
-import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
-import { CompanyTierService } from './company-tier/company-tier.service';
-import { EmployeeService } from './employee/employee.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
-import { TransactionListComponent } from './transaction/transaction-list/transaction-list.component';
-import { TransactionLogComponent } from './transaction/transaction-log/transaction-log.component';
-import { TransactionService } from './transaction/transaction.service';
+
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogService } from './shared/confirmation-dialog/confirmation-dialog.service';
 import { TopMenuComponent } from './top-menu/top-menu.component';
@@ -87,16 +76,10 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     NumbersOnly,
     LoginComponent,
-    CompanyListComponent,
-    CompanyAddComponent,
-    CompanyTierAddComponent,
-    CompanyTierListComponent, 
-    EmployeeAddComponent,
-    EmployeeListComponent,
+
     ChangePasswordComponent,
     ConfirmationDialogComponent,
-    TransactionListComponent,
-    TransactionLogComponent,
+
     ConfirmationDialogComponent,
     TopMenuComponent,
     ProductsListComponent,
@@ -157,12 +140,9 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     Title,
     UserService,
     ConfirmationDialogService,
-    TransactionService,
-    EmployeeService,
     FavouriteService,
-    CompanyTierService,
     ShowCaseService,
-    CompanyService,DatePipe,
+    DatePipe,
     ModalService, 
     ProductService,
     CategoryService,

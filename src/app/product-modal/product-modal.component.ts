@@ -66,7 +66,7 @@ getImages()
   this.productService.getProductImagesById(this.selectedItem.id).subscribe((data: any) => {
   this.imgUrl=environment.apiUrl.substr(0,environment.apiUrl.length-1)+data.stats.imagepath_productpic;
   
-  this.selectedItemImages.push(this.selectedItem.image);
+  //this.selectedItemImages.push(this.selectedItem.image);
 
   for(let i=0;i<data.results.length;i++)
   this.selectedItemImages.push(data.results[i].image);

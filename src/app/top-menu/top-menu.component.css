@@ -10,3 +10,11 @@ nav .navigation-top > ul {
     text-align: right;
     height: 90px;
 }
+nav .navigation-main .floating-menu > ul > li:hover {
+    background-color: #966637;
+}
+
+nav .navigation-main {
+    border-top: 1px solid #966637;
+    border-bottom: 1px solid #966637;
+}

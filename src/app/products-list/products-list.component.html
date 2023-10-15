@@ -67,70 +67,9 @@
                                     
                                 </div>
                             </div>
-                                <!--Room-->
 
-                                <div class="filter-box active">
-                                    <div translate class="title">
-                                        modal_room
-                                    </div>
-                                    <div class="filter-content">
-                                        <mat-progress-bar class="products-list-filters-progress-bar" mode="indeterminate" [hidden]="(rooms && rooms.length>0)" mode="indeterminate"></mat-progress-bar>
-                                        <span class="checkbox">
-                                            <input [checked]="(!filterParam || (filterParam && !filterParam.includes('room')) || 'roomId_0' == filterParam) ? true : false" 
-                                            (change)="changeSearch($event)" type="radio" name="radiogroup-room" id="roomId_0">
-                                            <label for="roomId_0" translate>all</label>
-                                        </span>
-                                        <span *ngFor="let item of rooms" class="checkbox">
-                                            <input [checked]="(filterParam && ('room_'+item.id) == filterParam) ? true : false" 
-                                            (change)="changeSearch($event)" type="radio" name="radiogroup-room" id="roomId_{{item.id}}">
-                                            <label for="roomId_{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</label>
-                                        </span>
-                                    </div>
-                                </div>
 
-                                  <!--Style-->
 
-                                  <div class="filter-box active">
-                                    <div translate class="title">
-                                        modal_style
-                                    </div>
-                                    <div class="filter-content">
-                                        <mat-progress-bar class="products-list-filters-progress-bar" mode="indeterminate" [hidden]="(styles && styles.length>0)" mode="indeterminate"></mat-progress-bar>
-                                        <span class="checkbox">
-                                            <input [checked]="(!filterParam || (filterParam && !filterParam.includes('style')) || 'styleId_0' == filterParam)" 
-                                            (change)="changeSearch($event)" type="radio" name="radiogroup-style" id="styleId_0">
-                                            <label for="styleId_0" translate>all</label>
-                                        </span>
-                                       
-                                        <span *ngFor="let item of styles" class="checkbox">
-                                            <input [checked]="(filterParam && ('style_'+item.id) == filterParam) ? true : false" 
-                                            (change)="changeSearch($event)" type="radio" name="radiogroup-style" id="styleId_{{item.id}}">
-                                            <label for="styleId_{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</label>
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <!--Store-->
-
-                                <div class="filter-box active">
-                                    <div translate class="title">
-                                        modal_store
-                                    </div>
-                                    <div class="filter-content">
-                                        <mat-progress-bar class="products-list-filters-progress-bar" mode="indeterminate" [hidden]="(stores && stores.length>0)" mode="indeterminate"></mat-progress-bar>
-                                        <span class="checkbox">
-                                            <input 
-                                            [checked]="(!filterParam || (filterParam && !filterParam.includes('store')) || 'storeId_0' == filterParam)"
-                                            (change)="changeSearch($event)" type="radio" name="radiogroup-store" id="storeId_0">
-                                            <label for="storeId_0" translate>all</label>
-                                        </span>
-                                        <span *ngFor="let item of stores" class="checkbox">
-                                            <input [checked]="(filterParam && ('store_'+item.id) == filterParam) ? true : false" 
-                                            (change)="changeSearch($event)" type="radio" name="radiogroup-store" id="storeId_{{item.id}}">
-                                            <label for="storeId_{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</label>
-                                        </span>
-                                    </div>
-                                </div>
 
                                 <div class="filter-box active">
                                     <div class="title" translate>
@@ -149,24 +88,7 @@
                                
                                 <!--District-->
 
-                                <div class="filter-box active">
-                                <div translate class="title">
-                                    modal_district
-                                </div>
-                                <div class="filter-content">
-                                    <mat-progress-bar class="products-list-filters-progress-bar" mode="indeterminate" [hidden]="(districts && districts.length>0)" mode="indeterminate"></mat-progress-bar>
-                                    <span class="checkbox">
-                                        <input [checked]="(!filterParam || (filterParam && !filterParam.includes('districts')) || 'districtId_0' == filterParam) ? true : false" 
-                                        (change)="changeSearch($event)" type="radio" name="radiogroup-district" id="districtId_0">
-                                        <label for="districtId_0" translate>all</label>
-                                    </span>
-                                    <span *ngFor="let item of districts" class="checkbox">
-                                        <input [checked]="(filterParam && ('district_'+item.id) == filterParam) ? true : false"
-                                        (change)="changeSearch($event)" type="radio" name="radiogroup-district" id="districtId_{{item.id}}">
-                                        <label for="districtId_{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</label>
-                                    </span>
-                                </div>
-                            </div>
+
                                  
                                 <!--Discount-->
                                     <!--
@@ -304,7 +226,7 @@
                                             <span  *ngIf="(item.discount>0)"  style="direction: ltr;" class="badge badge-warning">-{{item.discount}}%</span>
                                        
                                             <a routerLink="/product-detail/{{item.id}}">
-                                                <img style="max-height:240px;" src="{{imgUrl+item.image}}" alt="" />
+                                                <img style="max-height:240px;" src="{{imgUrl+item.productpic_image}}" alt="" />
                                             </a>
                                         </div>
                                         <div class="text">

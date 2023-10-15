@@ -20,7 +20,7 @@
                 <!--footer showroom-->
                 <div class="footer-showroom">
                     <div class="text-center">
-                        <a><img src="assets/images/logo.jpg" alt="" width="130" height="55" /></a>
+                        <a><img src="assets/images/logo.JPG" alt="" width="80" height="70" /></a>
                     </div>
                 </div>
 
@@ -35,15 +35,15 @@
                          </div>
                         </div>
                     -->
-                        <div class="col-md-5">
+                        <div [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+                        'leftToRight':translateService.currentLang=='en'}" class="col-md-5">
                             <h5 translate>menu_quicklinks</h5>
                             <ul>
                                 <li><a routerLink="/home" translate>menu_home</a></li>
-                                <li><a routerLink="/about" translate>menu_about</a></li>
-                                <li><a routerLink="/faq" translate>menu_faq</a></li>
-                                <li><a routerLink="/privacy" translate>menu_privacy</a></li>
+                                <!-- <li><a routerLink="/about" translate>menu_about</a></li> -->
+                                <!-- <li><a routerLink="/faq" translate>menu_faq</a></li>
+                                <li><a routerLink="/privacy" translate>menu_privacy</a></li> -->
                                 <li><a routerLink="/products-list" translate>menu_products</a></li>
-                                <li><a routerLink="/stores-list" translate>menu_stores</a></li>
                                 <li><a routerLink="/contact" translate>contact_us</a></li>
                   
                             </ul>

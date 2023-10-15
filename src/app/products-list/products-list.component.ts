@@ -92,10 +92,7 @@ export class ProductsListComponent implements OnInit {
       this.loadPopularProducts();
       ////////////////////////////////////////
       this.loadFavourites();
-      this.loadStores();
-      this.loadRooms();
-      this.loadStyles();
-      this.loadDistricts();
+
 
       if(this.filterParam && this.filterParam.includes('cat'))
         this.loadCategories(Number(this.filterParam.split('_')[1]));
@@ -189,22 +186,7 @@ export class ProductsListComponent implements OnInit {
     }
     },response => {});
   }
-  loadStyles()
-  {
-    this.lookupService.getStylesList().subscribe((data: any) => {this.styles=data.results?data.results:data;},response => {});
-  }
-  loadRooms()
-  {
-    this.lookupService.getRoomsList().subscribe((data: any) => {this.rooms=data.results?data.results:data;},response => {});
-  }
-  loadStores()
-  {
-    this.storeService.getStoresList().subscribe((data: any) => {this.stores=data.results?data.results:data;},response => {});
-  }
-  loadDistricts()
-  {
-    this.lookupService.getDistrictsList().subscribe((data: any) => {this.districts=data.results?data.results:data;},response => {});
-  }
+ 
   //-----------------------------------------------------------------------------------------------------
   pagingEvent(event?:PageEvent)
   {
@@ -254,8 +236,9 @@ export class ProductsListComponent implements OnInit {
   {
     this.spinner.show();
     this.productService.getProducts(this.productSearch).subscribe((data: any) => {
+      console.log(data.stats);
       //this.productItems=data.results;
-      this.imgUrl=environment.apiUrl.substr(0,environment.apiUrl.length-1)+data.stats.imagepath_product;
+      this.imgUrl=environment.apiUrl.substr(0,environment.apiUrl.length-1)+data.stats.imagepath_productpic;
       this.productItems=data.results;
       this.datasource = this.productItems;
       this.length = data.stats.count;

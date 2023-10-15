@@ -5,12 +5,9 @@ import { HomeComponent } from './home/home.component';
 
 import { AuthGuard } from './shared/services/auth.guard';
 import { LoginComponent } from './login/login.component';
-import { CompanyListComponent } from './company/company-list/company-list.component';
-import { CompanyTierListComponent } from './company-tier/company-tier-list/company-tier-list.component';
-import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
+
 import { ChangePasswordComponent } from './change-password/change-password.component';
 
-import { TransactionListComponent } from './transaction/transaction-list/transaction-list.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';

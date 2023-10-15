@@ -12,11 +12,11 @@ export class BasicAuthInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
         // add authorization header with basic auth credentials if available
         const currentUser = this.authenticationService.currentUserValue;
-         if (currentUser && currentUser.token) {
+         if (true){//currentUser && currentUser.token) {
                request = request.clone({
                 headers: request.headers.set(
                   'Authorization',
-                  'Bearer ' + currentUser.token
+                  'Bearer ' + 'MY_API_KEY_SALAHYOUSSEF'//currentUser.token
                 )});
            
         }

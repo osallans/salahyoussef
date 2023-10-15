@@ -22,4 +22,5 @@ export class Product {
   category_namear:String
   store_name:String
   store_namear:String
+  productpic_extra_count:number
 }

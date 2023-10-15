@@ -9,8 +9,8 @@
           <ul>
               <!--add active class for current page-->
               <li class="left-side"><a routerLink="/home" class="logo-icon"><img src="assets/images/logo.JPG" alt="Alternate Text" width="80" height="80"/></a></li>
-              <li><a href="javascript:void(0);" [hidden]="authenticationService.currentUserValue" class="open-login"><i class="icon icon-enter"></i>  &nbsp; <span translate>sign_in</span></a></li>
-              <li><a href="javascript:void(0);" [hidden]="!authenticationService.currentUserValue" class="open-user"><i class="icon icon-user"></i></a></li>
+              <!-- <li><a href="javascript:void(0);" [hidden]="authenticationService.currentUserValue" class="open-login"><i class="icon icon-enter"></i>  &nbsp; <span translate>sign_in</span></a></li>
+              <li><a href="javascript:void(0);" [hidden]="!authenticationService.currentUserValue" class="open-user"><i class="icon icon-user"></i></a></li> -->
               <!--<li><a href="javascript:void(0);" [hidden]="!authenticationService.currentUserValue" class="open-cart display-showcase"><i class="icon icon-briefcase"></i> <span *ngIf="cartItems && cartItems.length>0">{{cartItems.length}}</span></a></li>-->
           </ul>
       </div>
@@ -30,8 +30,10 @@
               <div class="close-menu-wrapper">
                   <span class="close-menu"><i class="icon icon-cross"></i></span>
               </div>
+              
               <ul>
-                  <li>
+                  
+                <li>
                     <a routerLink="/home" translate>menu_home</a>
                   </li>
                  <!--
@@ -42,7 +44,6 @@
                     <a routerLink="/faq" translate>menu_faq</a>
                   </li>
                   -->
-                  <!-- <li><a routerLink="/products-list" translate>menu_products</a></li> -->
                   <li>
                       <a class="menu-anchor"  translate>menu_categories <span class="open-dropdown" [ngStyle]="{'right':translateService.currentLang=='ar'? '90%':'0'}"><i class="fa fa-angle-down"></i></span></a>
                       <div class="navbar-dropdown navbar-dropdown-single">
@@ -60,65 +61,8 @@
                           </div>
                       </div>
                   </li>
-                  <li>
-                      <a routerLink="/stores-list" translate>menu_stores 
-                    <!-- 
-                        <span class="open-dropdown"><i class="fa fa-angle-down"></i></span>-->
-                    </a>
-                      <!-- <div class="navbar-dropdown navbar-dropdown-single">
-                          <div class="navbar-box">
-                              <div class="box-full">
-                                  <div class="box clearfix">
-                                      <ul>
-                                          <li *ngFor="let item of stores">
-                                            <a (click)='goToPage("store",item.id)'>{{(translateService.currentLang=='ar')?item.namear:item.name}}</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                    -->
-                  </li>
-                  <li >
-                      <a class="menu-anchor"  translate>menu_rooms <span class="open-dropdown" [ngStyle]="{'right':translateService.currentLang=='ar'? '90%':'0'}"><i class="fa fa-angle-down"></i></span></a>
-                      <div class="navbar-dropdown navbar-dropdown-single">
-                          <div class="navbar-box">
-                              <div class="box-full">
-                                  <div *ngIf="rooms && rooms.length>0" class="box clearfix">
-                                      <ul>
-                                          <li *ngFor="let item of rooms">
-                                            <a (click)='goToPage("room",item.id)'>{{(translateService.currentLang=='ar')?item.namear:item.name}}</a>
-                                       </li>
-                                      </ul>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </li>
-                  <li >
-                    <a class="menu-anchor"  translate>modal_style <span class="open-dropdown" [ngStyle]="{'right':translateService.currentLang=='ar'? '90%':'0'}"><i class="fa fa-angle-down"></i></span></a>
-                    <div class="navbar-dropdown navbar-dropdown-single">
-                        <div class="navbar-box">
-                            <div class="box-full">
-                                <div *ngIf="styles && styles.length>0" class="box clearfix">
-                                    <ul>
-                                        <li *ngFor="let item of styles">
-                                          <a (click)='goToPage("style",item.id)'>{{(translateService.currentLang=='ar')?item.namear:item.name}}</a>
-                                     </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                 <li class="display-showcase">
-                    <a routerLink="/all-showcases" translate>showcase</a>
-                  </li>
-                  <li><a routerLink="/promotions" translate>promo</a></li>
+                  <li><a routerLink="/products-list" translate>menu_products</a></li>
                   <li><a routerLink="/contact" translate>contact_us</a></li>
-                  <li><a routerLink="/blog" translate>blog</a></li>
-                  
                   
                 <li class="nav-settings" >
                     <a class="menu-anchor"><span id="language_holder" class="nav-settings-value">{{languageHolder}}</span> <span [ngStyle]="{'right':translateService.currentLang=='ar'? '90%':'0'}" class="open-dropdown"><i class="fa fa-angle-down"></i></span></a>
@@ -135,74 +79,7 @@
                         </div>
                     </div>
                 </li>
-                  <!--
-                  <li>
-                      <a href="index.html">Browse Shop  <span class="open-dropdown"><i class="fa fa-angle-down"></i></span></a>
-                      <div class="navbar-dropdown">
-                          <div class="navbar-box">
-                              <div class="box-lg">
-                                  <div class="box clearfix">
-                                      <div class="row">
-                                          <div class="col-lg-4">
-                                              <ul>
-                                                  <li class="label">Explore by Category</li>
-                                                  <li><a href="products-list.html">Lighting</a></li>
-                                                  <li><a href="products-list.html">Gardens</a></li>
-                                                  <li><a href="products-list.html">Outdoor</a></li>
-                                                  <li><a href="products-list.html">Decorations</a></li>
-                                                  <li><a href="products-list.html">Gardens</a></li>
-                                                  <li><a href="products-list.html">Outdoor</a></li>
-                                                  <li><a href="products-list.html">Decorations</a></li>
-                                                  <li class="more"><a href="category.html"><i class="icon icon-chevron-right"></i> More</a></li>
-                                              </ul>
-                                          </div>
-                                          <div class="col-lg-4">
-                                              <ul>
-                                                  <li class="label">Explore by Stores</li>
-                                                  <li><a href="products-grid.html">A&W</a></li>
-                                                  <li><a href="products-grid.html">Kian</a></li>
-                                                  <li><a href="products-grid.html">La-z- Boy</a></li>
-                                                  <li><a href="products-grid.html">Ashley</a></li>
-                                                  <li><a href="products-grid.html">Kian</a></li>
-                                                  <li><a href="products-grid.html">La-z- Boy</a></li>
-                                                  <li><a href="products-grid.html">Ashley</a></li>
-                                                  <li class="more"><a href="stores.html"><i class="icon icon-chevron-right"></i> More</a></li>
-                                              </ul>
-                                          </div>
-                                          <div class="col-lg-4">
-                                              <ul>
-                                                  <li class="label">Explore by Room</li>
-                                                  <li><a href="products-list.html">Living Room</a></li>
-                                                  <li><a href="products-list.html">Bedroom</a></li>
-                                                  <li><a href="products-list.html">TV Room</a></li>
-                                                  <li><a href="products-list.html">Toilets</a></li>
-                                                  <li><a href="products-list.html">Bedroom</a></li>
-                                                  <li><a href="products-list.html">TV Room</a></li>
-                                                  <li><a href="products-list.html">Toilets</a></li>
-                                                  <li class="more"><a href="category.html"><i class="icon icon-chevron-right"></i> More</a></li>
-                                              </ul>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="box-sm">
-                                  <div class="image">
-                                      <img src="assets/images/m-1.jpg" alt="Alternate Text" />
-                                  </div>
-                                  <div class="box">
-                                      <div class="h4">Premium quality</div>
-                                      <div class="clearfix">
-                                          <p>Homes that differ in terms of style, concept and architectural solutions have been furnished by Furniture Factory. These spaces tell of an international lifestyle that expresses modernity, research and a creative spirit.</p>
-                                          <a class="btn btn-clean btn-big" href="products-list.html">Shop now</a>
-                                      </div>
-                                  </div>
-                              </div>
-  
-                          </div>
-                      </div>
-                  </li>
-                -->
-                  
+                 
               </ul>
           </div>
       </div>

@@ -90,12 +90,10 @@ submitShowCase()
         password: new FormControl('', [])
     });
     
-    this.loadCategories();this.loadStores();this.loadRooms();this.loadCart();this.loadStyles();
+    this.loadCategories();
+    //this.loadCart();
 }
-loadStyles()
-{
-  this.lookupService.getStylesList().subscribe((datal: any) => {this.styles=datal;},response => {});
-}
+
 loadCart()
 {
   if(!this.authenticationService.currentUserValue) return;
@@ -123,14 +121,7 @@ loadCategories()
 {
   this.categoryService.getCategoriesList().subscribe((data: any) => {this.categories=data.results?data.results:data;},response => {});
 }
-loadStores()
-{
-  this.storeService.getStoresList().subscribe((datal: any) => {this.stores=datal.results;},response => {});
-}
-loadRooms()
-{
-  this.lookupService.getRoomsList().subscribe((data: any) => {this.rooms=data;},response => {});
-}
+
 
 goToPage(type,id) {
   this.floatingDiv.nativeElement.classList.remove('expanded');

@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   //apiUrl: 'https://apis-dot-gae-nodejs-poc.appspot.com/'
-  apiUrl: 'https://api.beitakguide.com/',
+  apiUrl: 'http://api.salahyoussef.com/',
   facebookAppId: '815966422339626'
 };
 
