@@ -46,11 +46,16 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
    
     this.loadBanners();
-    //this.loadRooms();
+    this.getPopularProducts();
   } 
   loadBanners()
   {
     this.spinner.show();
+    this.banners= [];
+    //this.banners.push(background-image: url("../../assets/images/banner2.JPG"));
+    //this.banners.push(background-image: url("../../assets/images/banner2.JPG"));
+    this.applyScripts();
+    this.spinner.hide();
     // this.lookupService.getBannerList().subscribe((data: any) => {
     //   this.banners=data.results;
     //   this.bannersUrl=environment.apiUrl.substr(0,environment.apiUrl.length-1)+data.stats.imagepath_adsbanner;
@@ -60,7 +65,7 @@ export class HomeComponent implements OnInit {
     //   },response => {
     //     this.spinner.hide();
     //   });
-      this.spinner.hide();
+    //   this.spinner.hide();
   }
   
 
@@ -77,24 +82,25 @@ export class HomeComponent implements OnInit {
   goToPage(type,id) {
     this.router.navigate(['/products-list'], { queryParams: { filterParam: type+"_"+id } });
   }
-  // getPopularProducts()
-  // {
-  //   let tempSearch=new ProductSearch();
-  //   tempSearch.isfeatured=1;
+  getPopularProducts()
+  {
+    let tempSearch=new ProductSearch();
+    tempSearch.isfeatured=0;
 
    
-  //   this.productService.getRandomProducts(tempSearch).subscribe((data: any) => {
-  //     this.imgUrl=environment.apiUrl.substr(0,environment.apiUrl.length-1)+data.stats.imagepath_product;
+    this.productService.getRandomProducts(tempSearch).subscribe((data: any) => {
+      this.imgUrl=environment.apiUrl.substr(0,environment.apiUrl.length-1)+data.stats.imagepath_productpic;
       
-  //   //   //this.notifyService.onLoadCompelete(loadID);
-  //   //   //this.notifyService.onSuccess("Operation Succeeded .. ", "Success");data=response;
-  //      this.popularProducts=data.results;
-  //      //this.loadBanners();
-  //       },response => {
-  //         console.log(response);
-  //      });
+       //this.notifyService.onLoadCompelete(loadID);
+       //this.notifyService.onSuccess("Operation Succeeded .. ", "Success");data=response;
+       console.log(data);
+       this.popularProducts=data.results;
+       //this.loadBanners();
+        },response => {
+          console.log(response);
+       });
     
-  // }
+  }
 
   // getDiscountProducts()
   // {

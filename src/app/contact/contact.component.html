@@ -7,12 +7,12 @@
     <div id="map">
 
      <!--=========================== Maps & rating ============================-->
-        <!--<div>
-         <agm-map [latitude]="30.4353088" [longitude]="30.2714005" [zoom]="8" [disableDefaultUI]="false">
-            <agm-marker [latitude]="30.4353088" [longitude]="30.2714005" [label]="" [markerDraggable]="false"></agm-marker>
-         </agm-map>
-        </div>
-    -->
+    <div class="mapouter">
+            <div class="gmap_canvas">
+        <iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0"
+                     marginwidth="0" src="https://maps.google.com/maps?height=400&amp;hl=en&amp;q=Salah Youssef - jewelry making tools & equipment, 78 Al Bab Al Thaleth, El-Gamaleya, El Gamaliya, Cairo Governorate 4331154&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                     </div>
+            </div>
     <img src="assets/images/image.png" style="width: 100%;" />
     </div>
 
@@ -26,7 +26,25 @@
 
                     <div class="contact-info">
                         <div class="row">
-                            <div class="col-sm-12">
+
+                            
+                            <div class="col-sm-4">
+                                <figure class="text-center">
+                                    <span class="icon icon-phone"></span>
+                                    <figcaption>
+                                        <strong translate>contact_content_5</strong>
+                                        <span [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+                                        'leftToRight':translateService.currentLang=='en'}">
+                                          
+                                            <strong translate>contact_content_7 </strong> : <span translate> contact_content_9  </span> 
+                                            <br />
+                                            <strong translate>contact_content_8 </strong> : <span translate> contact_content_10   </span>
+                                        </span>
+                                    </figcaption>
+                                </figure>
+                            </div>
+
+                            <div class="col-sm-4">
                                 <figure class="text-center">
                                     <span class="icon icon-map-marker"></span>
                                     <figcaption>
@@ -35,32 +53,20 @@
                                     </figcaption>
                                 </figure>
                             </div>
-                            <!--
-                            <div class="col-sm-4">
-                                <figure class="text-center">
-                                    <span class="icon icon-phone"></span>
-                                    <figcaption>
-                                        <strong>Call us</strong>
-                                        <span>
-                                            <strong>T</strong> +1 222 333 4444 <br />
-                                            <strong>F</strong> +1 222 333 5555
-                                        </span>
-                                    </figcaption>
-                                </figure>
-                            </div>
+
                             <div class="col-sm-4">
                                 <figure class="text-center">
                                     <span class="icon icon-clock"></span>
                                     <figcaption>
-                                        <strong>Working hours</strong>
+                                        <strong translate>contact_content_6</strong>
                                         <span>
-                                            <strong>Mon</strong> - Sat: 10 am - 6 pm <br />
-                                            <strong>Sun</strong> 12pm - 2 pm
+                                            <span translate>contact_content_11</span> <br />
+                                            
                                         </span>
                                     </figcaption>
                                 </figure>
                             </div>
-                            -->
+                           
                         </div>
                     </div>
 

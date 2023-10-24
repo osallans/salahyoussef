@@ -1,6 +1,6 @@
         <!-- ======================== Products ======================== -->
 
-        <section *ngIf="product && product.id" class="product pt-0">
+        <section *ngIf="product && product.id" class="product pt-0" style="margin-top:50px">
 
             <header [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}" >
                 <div class="container">
@@ -22,46 +22,31 @@
 
                                     <!--price wrapper-->
 
-                                    <div class="price">
+                                    <!-- <div class="price">
                                         <span class="h3">
                                             <span *ngIf="(product.discount>0)">{{(product.price * (100-product.discount) / 100) | number:'1.0-0'}} <span translate>currency</span></span>
                                             <small *ngIf="(product.discount>0)">{{product.price | number:'1.0-0'}} <span translate>currency</span></small>
                                             <span *ngIf="(product.discount==0)">{{product.price | number:'1.0-0'}} <span translate>currency</span></span>
                                         </span>
-                                    </div>
+                                    </div> -->
 
                                     <hr />
 
                                     <!--info-box-->
 
-                                    <div class="info-box">
-                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_store</strong></span>
-                                        <div *ngIf="store && store.id" [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{(translateService.currentLang=='ar')?store.namear:store.name}}</div>
-                                        <div [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><a (click)="scroll()" 
-                                            style="margin:10px 0px;cursor: pointer;color: #0000ff8a;" translate>modal_viewmore</a></div>
-                                    </div>
-                                    <hr />
+                                   
+                                    <!--info-box-->
+
+                                   
+
+                                   
                                     <!--info-box-->
 
                                     <div class="info-box">
-                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_room</strong></span>
-                                        <div *ngIf="productRooms && productRooms.length>0" class="product-colors clearfix">
-                                            <span class="badge badge-items" *ngFor="let item of productRooms">
-                                             {{(translateService.currentLang=='ar')?item.namear:item.name}}
-                                            </span>
-                                            <br/>
-                                         </div>
-                                    </div>
-
-                                    <hr />
-
-                                    <!--info-box-->
-
-                                    <div class="info-box">
-                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_style</strong></span>
-                                        <div *ngIf="productStyles && productStyles.length>0" class="product-colors clearfix">
-                                            <span class="badge badge-items" *ngFor="let item of productStyles">
-                                             {{(translateService.currentLang=='ar')?item.namear:item.name}}
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_origin</strong></span>
+                                        <div  class="product-colors clearfix">
+                                            <span class="badge badge-items">
+                                             {{(translateService.currentLang=='ar')?product.originar:product.origin}}
                                             </span>
                                             <br/>
                                          </div>
@@ -71,19 +56,19 @@
 
                                     <!--info-box-->
 
-                                    <div class="info-box">
-                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_material</strong></span>
-                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{(translateService.currentLang=='ar')?product.materialar:product.material}}</span>
-                                    </div>
 
-                                    <hr />
 
 
                                     <!--info-box-->
 
                                     <div class="info-box">
                                         <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_category</strong></span>
-                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{(translateService.currentLang=='ar')?product.category_namear:product.category_name}}</span>
+                                             <div  class="product-colors clearfix">
+                                                <span class="badge badge-items">
+                                                 {{(translateService.currentLang=='ar')?product.category_namear:product.category_name}}
+                                                </span>
+                                                <br/>
+                                             </div>
                                     </div>
 
                                     <hr />
@@ -92,59 +77,32 @@
 
                                     <div class="info-box">
                                         <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_specs</strong></span>
-                                        <span style="white-space: break-spaces;" [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{(translateService.currentLang=='ar')?product.specsar:product.specs}}</span>
+                                        <span style="white-space: break-spaces;" [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{(translateService.currentLang=='ar')?product.descar:product.desc}}</span>
                                     </div>
 
                                     <hr />
                                     
                                     <!--info-box-->
 
-                                    <div class="info-box">
+                                    <!-- <div class="info-box">
                                         <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_dimensions</strong></span>
                                         <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}">{{(translateService.currentLang=='ar')?product.dimensions:product.dimensions}}</span>
-                                    </div>
+                                    </div> -->
                                       <!--info-box-->
 
                               
 
-                                    <hr />
+                                    <!-- <hr /> -->
 
                                     <!--info-box-->
 
-                                    <div  id="storesection" class="info-box">
-                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_color</strong></span>
-                                        <div *ngIf="productCombs && productCombs.length>0" class="product-colors clearfix">
-                                            <span class="badge badge-items" *ngFor="let item of productCombs">
-                                            {{(translateService.currentLang=='ar')?item.color_namear:item.color_name}}
-                                            </span>
-                                           <br/>
-                                            <!--
-                                            <span class="color-btn color-btn-red"></span>
-                                            <span class="color-btn color-btn-blue checked"></span>
-                                            <span class="color-btn color-btn-green"></span>
-                                            <span class="color-btn color-btn-gray"></span>
-                                            <span class="color-btn color-btn-biege"></span>
-                                           -->
-                                        </div>
-                                    </div>
-                                    <hr/>
-                                    <!--info-box-->
-                                    <div class="info-box">
-                                            <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_available</strong></span>
-                                            <div *ngIf="productBranches && productBranches.length>0" class="product-colors clearfix">
-                                                <span class="badge badge-items" *ngFor="let item of productBranches">
-                                                 {{(translateService.currentLang=='ar')?item.namear:item.name}}
-                                                </span>
-                                                <br/>
-                                             </div>
-                                         </div>
-                                    <hr />
-
+                                   
+<!-- 
                                     <div class="info-box">
                                         <iframe [src]="fbProductUrl" width="67" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                                    
                                         <hr/>
-                                    </div>
+                                    </div> -->
 
                                     <!--info-box
 
@@ -232,9 +190,9 @@
                     </div>
                 </div>
             </div>
-            <div style="text-align: center;">
+            <!-- <div style="text-align: center;">
                 <img style="margin:auto;" width="80%" src="assets/images/banner.jpg">
-            </div>
+            </div> -->
         </section>
 
         <!--=========================== Store & rating ============================-->

@@ -1,14 +1,14 @@
 <nav>
     <div class="container">
   
-      <a routerLink="/home"  class="logo"><img src="assets/images/logo.JPG" alt=""  width="130" height="80"/></a>
+      <a routerLink="/home"  class="logo"><img src="assets/images/logo.JPG" alt=""  class="logo-img"/></a>
   
       <!-- ==========  Top navigation ========== -->
   
       <div class="navigation navigation-top clearfix">
           <ul>
               <!--add active class for current page-->
-              <li class="left-side"><a routerLink="/home" class="logo-icon"><img src="assets/images/logo.JPG" alt="Alternate Text" width="80" height="80"/></a></li>
+              <li class="left-side"><a routerLink="/home" class="logo-icon"><img class="logo-img" src="assets/images/logo.JPG" alt="Alternate Text"/></a></li>
               <!-- <li><a href="javascript:void(0);" [hidden]="authenticationService.currentUserValue" class="open-login"><i class="icon icon-enter"></i>  &nbsp; <span translate>sign_in</span></a></li>
               <li><a href="javascript:void(0);" [hidden]="!authenticationService.currentUserValue" class="open-user"><i class="icon icon-user"></i></a></li> -->
               <!--<li><a href="javascript:void(0);" [hidden]="!authenticationService.currentUserValue" class="open-cart display-showcase"><i class="icon icon-briefcase"></i> <span *ngIf="cartItems && cartItems.length>0">{{cartItems.length}}</span></a></li>-->
@@ -18,8 +18,8 @@
       <!-- ==========  Main navigation ========== -->
   
       <div class="navigation navigation-main">
-          <a  class="open-login" [hidden]="authenticationService.currentUserValue" ><i class="icon icon-enter"></i></a>
-          <a  class="open-user"  [hidden]="!authenticationService.currentUserValue"><i class="icon icon-user"></i></a>
+          <!-- <a  class="open-login" [hidden]="authenticationService.currentUserValue" ><i class="icon icon-enter"></i></a>
+          <a  class="open-user"  [hidden]="!authenticationService.currentUserValue"><i class="icon icon-user"></i></a> -->
           <!--a  class="open-cart display-showcase"  [hidden]="!authenticationService.currentUserValue"><i class="icon icon-briefcase"></i> <span><span *ngIf="cartItems && cartItems.length>0">{{cartItems.length}}</span></span></a>-->
           <a  class="open-menu"><i class="icon icon-menu"></i></a>
   

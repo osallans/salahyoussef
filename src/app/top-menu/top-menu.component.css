@@ -6,6 +6,14 @@ nav .navigation-main .navbar-dropdown .navbar-box ul > li > a:hover
 {
     color: orange;
 }
+.logo-img {
+    height: 80px;
+    width: 80px;
+}
+nav .logo img {
+    height: 50px;
+    width: 55px;
+}
 nav .navigation-top > ul {
     text-align: right;
     height: 90px;
@@ -18,3 +26,46 @@ nav .navigation-main {
     border-top: 1px solid #966637;
     border-bottom: 1px solid #966637;
 }
+nav .navigation-main .floating-menu > ul > li .navbar-dropdown .navbar-box .box-full {
+    background-color: #282828;
+}
+
+nav .navigation-main .navbar-dropdown .navbar-box ul > li > a {
+    color: white;
+    display: block;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #251f1a;
+    font-size: 14px;
+}
+
+@media (max-width: 1000px ){
+    nav .navigation-main .floating-menu > ul > li:hover {
+        background-color: #282828;
+    }
+    nav .navigation-main .floating-menu {
+        background-color: #282828;
+    }
+    nav .navigation-main .floating-menu > ul > li > a {
+        border-bottom: 1px solid #6a4826;
+    }
+    
+    
+    nav .navigation-main .close-menu-wrapper {
+        height: 50px;
+        border-bottom: 1px solid #282828;
+    }
+    
+    .box ul{
+        background-color: #282828;
+    }
+    .floating-menu .navbar-dropdown {
+        background-color: #282828;
+    }
+    nav .navigation-main .floating-menu > ul > li .navbar-dropdown .navbar-box .box-full {
+        background-color: #181817;
+    }
+    }
+
+
+
+

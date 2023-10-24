@@ -145,3 +145,31 @@ ul, #myUL {
   .active {
     display: block;
   }
+
+  .btn-success, .btn-success {
+    color: #fff;
+    background-color: #8e6c34;
+    border-color: #948369;
+}
+.checkbox input[type="checkbox"]:checked + label:before, .checkbox input[type="radio"]:checked + label:before {
+  background: #8e6c34;
+}
+
+
+.popularitemsimg{
+  height:500px;
+ 
+}
+@media (max-width: 1000px ){
+.products article .image img {
+height:120px;
+width:120px;
+}
+.products article .image {
+  width: 0% !important;
+}
+.popularitemsimg{
+   height:500px;
+  
+}
+}

@@ -1,6 +1,6 @@
         <!-- ======================== Products ======================== -->
 
-        <section class="products pt-0">
+        <section class="products pt-0" style="margin-top:50px">
 
             
 
@@ -25,6 +25,21 @@
                                 </div>
                               <!--Type-->
 
+                              <div class="filter-box active">
+                                <div class="title" translate>
+                                    price_range
+                                </div>
+                                <div class="filter-content">
+        
+                                    <input id="txt_name"  
+                                    [attr.placeholder]="translateService.instant('list_name')" [(ngModel)]="searchText"
+                                    type="text" class="form-control input-lg">
+                                    <button class="btn btn-success float-right" (click)="searchName(searchText)"
+                                    translate>search
+                                  </button>
+                                </div>
+                            </div>
+                              
                               <div class="filter-box active">
                                 <div translate class="title">
                                     modal_category
@@ -71,20 +86,7 @@
 
 
 
-                                <div class="filter-box active">
-                                    <div class="title" translate>
-                                        price_range
-                                    </div>
-                                    <div class="filter-content">
-            
-                                        <div class="custom-slider">
-                                            <ngx-slider 
-                                            (userChange)="onSliderChange($event)"
-                                            (userChangeEnd)="onSliderChange($event)"
-                                            [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
-                                          </div>
-                                    </div>
-                                </div>
+
                                
                                 <!--District-->
 
@@ -160,7 +162,7 @@
                             [ngStyle]="{'float':translateService.currentLang=='ar'?'right':'left'}">
 
                                 <!--Showing result per page-->
-                                <mat-paginator #paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[5,10,20]" (page)="pagingEvent($event)">
+                                <mat-paginator #paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[5,10,20,600]" (page)="pagingEvent($event)">
                                 </mat-paginator>
                             </div>
 
@@ -168,14 +170,14 @@
 
                             <div [ngStyle]="{'text-align':translateService.currentLang=='ar'?'left':'right'}" class="sort-options pull-right col-sm-6" >
 
-                                <span class="d-none d-sm-inline-block" translate>list_sort</span>
+                                <!-- <span class="d-none d-sm-inline-block" translate>list_sort</span> -->
 
-                                <select (change)="sortBy($event.target.value)">
+                                <!-- <select (change)="sortBy($event.target.value)">
                                     <option value="name_asc" translate>list_name</option>
                                     <option value="isfeatured_desc" translate>list_popular</option>
                                     <option value="price_asc" translate>list_lowest</option>
                                     <option value="price_desc" translate>list_highest</option>
-                                </select>
+                                </select> -->
 
                                 <!--Grid-list view-->
 
@@ -236,9 +238,9 @@
                                             <h6 class="title h6">
                                                 <a routerLink="/store-detail/{{item.storeid}}">{{(translateService.currentLang=='ar')?item.store_namear:item.store_name}}</a>
                                             </h6>
-                                            <sub *ngIf="(item.discount!=0)">{{item.price | number:'1.0-0'}} <span translate>currency</span></sub>
+                                            <!-- <sub *ngIf="(item.discount!=0)">{{item.price | number:'1.0-0'}} <span translate>currency</span></sub>
                                             <span *ngIf="(item.discount==0)" style="font-size:12px;">{{item.price | number:'1.0-0'}} <span translate>currency</span></span>
-                                            <sup *ngIf="(item.discount>0)">{{(item.price * (100-item.discount) / 100)| number:'1.0-0'}} <span translate>currency</span></sup>
+                                            <sup *ngIf="(item.discount>0)">{{(item.price * (100-item.discount) / 100)| number:'1.0-0'}} <span translate>currency</span></sup> -->
                                             <span class="description clearfix">
                                                 {{(translateService.currentLang=='ar')?item.descar:item.desc}}
                                             </span>
@@ -273,7 +275,7 @@
                 'leftToRight':translateService.currentLang=='en'}">
 
                     <!--Product item-->
-                    <div *ngFor="let item of popularItems" class="col-6 col-lg-3">
+                    <div *ngFor="let item of popularItems" class="col-lg-4 col-md-12 col-sm-12">
                         <article>
                             <div class="info">
                                 <span>
@@ -282,25 +284,26 @@
                                     </a>
                                 </span>
                             </div>
-                            <div class="btn btn-add">
+                            <!-- <div class="btn btn-add">
                                 <i class="icon icon-briefcase"></i>
-                            </div>
+                            </div> -->
                             <div class="figure-grid">
-                                <div class="image">
+                                <div class="">
                                     <a routerLink="/product-detail/{{item.id}}">
-                                        <img style="max-height:240px;" src="{{imgUrl+item.image}}" alt="" />
+                                        <img class="popularitemsimg"  src="{{imgUrl+item.productpic_image}}" alt="" />
                                     </a>
                                 </div>
                                 <div class="text">
                                     <h2 class="title h4">
                                         <a routerLink="/product-detail/{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</a>
                                     </h2>
-                                    <h6 class="title h6">
+                                    
+                                    <!-- <h6 class="title h6">
                                         <a routerLink="/store-detail/{{item.storeid}}">{{(translateService.currentLang=='ar')?item.store_namear:item.store_name}}</a>
-                                    </h6>
-                                    <sub *ngIf="(item.discount!=0)">{{item.price | number:'1.0-0'}} <span translate>currency</span></sub>
+                                    </h6> -->
+                                    <!-- <sub *ngIf="(item.discount!=0)">{{item.price | number:'1.0-0'}} <span translate>currency</span></sub>
                                     <span *ngIf="(item.discount==0)" style="font-size:12px;">{{item.price | number:'1.0-0'}} <span translate>currency</span></span>
-                                    <sup *ngIf="(item.discount>0)">{{(item.price * (100-item.discount) / 100)| number:'1.0-0'}} <span translate>currency</span></sup>
+                                    <sup *ngIf="(item.discount>0)">{{(item.price * (100-item.discount) / 100)| number:'1.0-0'}} <span translate>currency</span></sup> -->
                                      <span class="description clearfix">
                                         {{(translateService.currentLang=='ar')?item.descar:item.desc}}
                                     </span>

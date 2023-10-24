@@ -26,9 +26,9 @@ agm-map {
     width: 100% !important;
     text-align: center;
 }
-gallery-core[imageSize=contain] gallery-slider .g-image-item {
+/* gallery-core[imageSize=contain] gallery-slider .g-image-item {
     background-size: cover !important;
-}
+} */
 .contact #map {
     background-color: white !important;
 }

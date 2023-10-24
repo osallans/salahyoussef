@@ -1,3 +1,11 @@
 ::ng-deep  gallery-thumbs {
     visibility: visible !important;
   }
+
+  gallery-item
+  {zoom: 0.5;}
+
+  .badge-items {
+    
+    background: #a9733e;
+}

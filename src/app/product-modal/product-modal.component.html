@@ -8,9 +8,7 @@
             <span>{{(translateService.currentLang=='ar')?selectedItem.namear:selectedItem.name}}</span>
             <small>{{(translateService.currentLang=='ar')?selectedItem.store_namear:selectedItem.store_name}}</small>
         </div>
-        <div class="h3 title col-md-3" [ngClass]="{'lefty':translateService.currentLang=='ar','righty':translateService.currentLang!='ar'}">
-            <button (click)="dismissModal()">X</button>
-        </div>
+       
     </div>
 
     <!--Product gallery-->
@@ -29,7 +27,7 @@
                 <!--Left side-->
 
                 <div class="col-sm-6">
-                    <div class="info-box">
+                    <!-- <div class="info-box">
                     
                         <strong translate>modal_store</strong>
                         <span [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
@@ -40,7 +38,7 @@
                         <strong translate>modal_material</strong>
                         <span [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
                         'leftToRight':translateService.currentLang=='en'}">{{(translateService.currentLang=='ar')?selectedItem.materialar:selectedItem.material}}</span>
-                    </div>
+                    </div> -->
                     <!--
                     <div class="info-box">
                         <strong>Availability</strong>
@@ -92,19 +90,21 @@
 
     <div class="popup-table" >
         <div class="popup-cell">
-            <div class="price">
-                <span *ngIf="(selectedItem.discount>0)">{{(selectedItem.price * (100-selectedItem.discount) / 100) | number:'1.0-0'}} <span translate>currency</span></span>
+            <div class="popup-buttons">
+                <a (click)="navigateToProductDetail()"><span class="icon icon-eye" style="margin:5px;"></span> <span class="hidden-xs" translate>modal_viewmore</span></a>
+                <!-- <span *ngIf="(selectedItem.discount>0)">{{(selectedItem.price * (100-selectedItem.discount) / 100) | number:'1.0-0'}} <span translate>currency</span></span>
                 <small *ngIf="(selectedItem.discount>0)">{{selectedItem.price | number:'1.0-0'}} <span translate>currency</span></small>
-                <span *ngIf="(selectedItem.discount==0)">{{selectedItem.price | number:'1.0-0'}} <span translate>currency</span></span>
+                <span *ngIf="(selectedItem.discount==0)">{{selectedItem.price | number:'1.0-0'}} <span translate>currency</span></span> -->
             </div>
         </div>
         <div class="popup-cell" [ngClass]="{'rightToLeft':translateService.currentLang=='ar','leftToRight':translateService.currentLang=='en'}">
             <div class="popup-buttons">
-                <a (click)="navigateToProductDetail()"><span class="icon icon-eye" style="margin:5px;"></span> <span class="hidden-xs" translate>modal_viewmore</span></a>
+                <!-- <a (click)="navigateToProductDetail()"><span class="icon icon-eye" style="margin:5px;"></span> <span class="hidden-xs" translate>modal_viewmore</span></a> -->
+                <a (click)="dismissModal()"><span class="icon icon-exit" style="margin:5px;"></span> <span class="hidden-xs" translate>modal_close</span></a> 
                 <a class="display-showcase" (click)="addToShowCase()"><span class="icon icon-briefcase" style="margin:5px;"></span> <span class="hidden-xs" translate>modal_showcase</span></a>
             </div>
         </div>
     </div>
-
+   
 </div> <!--/product-->
 </div>

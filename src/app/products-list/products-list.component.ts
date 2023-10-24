@@ -63,6 +63,7 @@ export class ProductsListComponent implements OnInit {
 
   minValue: number = 0;
   maxValue: number = 10000;
+searchText: string;
 
   constructor(public translateService:TranslateService,public showCaseService:ShowCaseService,
     private spinner: NgxSpinnerService,private favouriteService:FavouriteService,public authenticationService:AuthenticationService,
@@ -88,7 +89,8 @@ export class ProductsListComponent implements OnInit {
        if(this.filterParam.includes('store'))this.productSearch.storeid=Number(this.filterParam.split('_')[1]);
        if(this.filterParam.includes('district'))this.productSearch.districtid=Number(this.filterParam.split('_')[1]);
       }
-     
+      this.imgUrl='http://api.salahyoussef.com/uploads/productpic/';
+      
       this.loadPopularProducts();
       ////////////////////////////////////////
       this.loadFavourites();
@@ -109,7 +111,12 @@ export class ProductsListComponent implements OnInit {
 
     
   }
-  
+  searchName(searchText:string)
+  {
+    console.log(searchText);
+    this.productSearch.searchterm=this.searchText!=''?this.searchText:null;
+    this.loadProducts(true);
+  }
   toggleShowCase(id:number)
   {
     this.spinner.show();
@@ -139,9 +146,9 @@ export class ProductsListComponent implements OnInit {
     this.productSearch.orderdir="asc";
     this.productSearch.orderfield="name";
     this.productSearch.page=1;
-    this.productSearch.pagesize=20;
+    this.productSearch.pagesize=5;
     this.pageIndex=0;
-    this.pageSize=20;
+    this.pageSize=5;
    
   }
   loadPopularProducts()
@@ -152,11 +159,10 @@ export class ProductsListComponent implements OnInit {
     tempSearch.orderfield="name";
     tempSearch.page=1;
     tempSearch.pagesize=4;
-    tempSearch.isfeatured=1;
+    tempSearch.isfeatured=0;
    
-    this.productService.getProducts(this.productSearch).subscribe((data: any) => {
+    this.productService.getProducts(tempSearch).subscribe((data: any) => {
      
-      this.imgUrl=environment.apiUrl.substr(0,environment.apiUrl.length-1)+data.stats.imagepath_product;
       this.popularItems=data.results;
       this.datasource = this.productItems;
       this.length = data.stats.count;
@@ -236,9 +242,11 @@ export class ProductsListComponent implements OnInit {
   {
     this.spinner.show();
     this.productService.getProducts(this.productSearch).subscribe((data: any) => {
-      console.log(data.stats);
+      console.log(data);
       //this.productItems=data.results;
-      this.imgUrl=environment.apiUrl.substr(0,environment.apiUrl.length-1)+data.stats.imagepath_productpic;
+      //this.imgUrl='http://api.salahyoussef.com/uploads/productpic/';
+      //environment.apiUrl.substr(0,environment.apiUrl.length-1)+data.stats.imagepath_productpic;
+      console.log(this.imgUrl);
       this.productItems=data.results;
       this.datasource = this.productItems;
       this.length = data.stats.count;
@@ -317,6 +325,7 @@ export class ProductsListComponent implements OnInit {
     else
       this.productSearch.storeid=Number(selectedId.split('_')[1]);
   }
+  this.productSearch.searchterm=this.searchText!=''?this.searchText:null;
   
   this.productSearch.page=1;
   this.loadProducts(true);

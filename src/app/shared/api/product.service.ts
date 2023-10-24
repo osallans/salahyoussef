@@ -13,9 +13,10 @@ export class ProductService {
 
   getProducts(productSearchObj: ProductSearch): Observable<Product[]> {
     let search:String;
-    search='page='+productSearchObj.page+'&pagesize='+productSearchObj.pagesize+"&isactive=0";
+    search='page='+productSearchObj.page+'&pagesize='+productSearchObj.pagesize+"&isactive=1";
     search+=productSearchObj.orderfield?"&orderfield="+productSearchObj.orderfield:"";
     search+=productSearchObj.orderdir?"&orderdir="+productSearchObj.orderdir:"";
+    search+=productSearchObj.searchterm?"&searchterm="+productSearchObj.searchterm:"";
     search+=productSearchObj.pricemin?"&pricemin="+productSearchObj.pricemin:"";
     search+=productSearchObj.pricemax?"&pricemax="+productSearchObj.pricemax:"";
     search+=productSearchObj.categoryid?"&categoryid="+productSearchObj.categoryid:"";

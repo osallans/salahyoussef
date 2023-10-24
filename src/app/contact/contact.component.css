@@ -1,0 +1,20 @@
+.mapouter{position:relative;text-align:right;width:100%;height:400px;}
+.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:400px;}
+.gmap_iframe {width:100%!important;height:400px!important;}
+.contact .contact-block .contact-info figure .icon {
+    font-size: 50px;
+    color: #966637;
+}
+.btn-success.disabled, .btn-success:disabled {
+    color: #fff;
+    background-color: #8e6c34;
+    border-color: #948369;
+}
+.contact .contact-block {
+    margin-top: -15px;
+}
+.form-control {
+    
+    border: 1px solid #966637 ;
+    
+}

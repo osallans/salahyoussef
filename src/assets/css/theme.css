@@ -1867,6 +1867,11 @@ nav .user-wrapper.open {
         border-bottom: 1px solid #e0e0e0;
     }
 }
+@media screen and (min-width: 992px) {
+    header {
+     padding-bottom: 3px !important;
+    }
+  }
 
 /*  
     ----------------------------------

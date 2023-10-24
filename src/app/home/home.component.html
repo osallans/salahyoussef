@@ -5,7 +5,7 @@
         </div>
     </div> -->
 
-    <div  class="wrapper">
+    
 
 
         <!-- ========================  Header content ======================== -->
@@ -17,6 +17,8 @@
 
                 <div class="owl-slider owl-carousel owl-theme" data-autoplay="true">
 
+                    <!-- <div *ngFor="let item of banners" class="item d-flex align-items-center" ></div> -->
+                    
                     <div class="item d-flex align-items-center banner1" ></div>
                     <div class="item d-flex align-items-center banner2" ></div>
                     
@@ -142,10 +144,10 @@
         <!-- ========================  Popular products  ======================== -->
 
         <section class="products">
-</section>
+
             <!--Header-->
 
-            <!-- <header>
+             <header>
                 <div [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}" class="container">
                     <h2 class="title" translate>home_popular</h2>
                     <div class="text">
@@ -154,25 +156,25 @@
                         </p>
                     </div>
                 </div>
-            </header> -->
+            </header> 
 
             <!--Content-->
 
-            <!-- <div class="container" [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+            <div class="container" [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
             'leftToRight':translateService.currentLang=='en'}">
 
-                <div *ngIf="popularProducts && popularProducts.length>0" class="row"> -->
+                <div *ngIf="popularProducts && popularProducts.length>0" class="row"> 
 
                     <!--Product item-->
 
-                    <!-- <div *ngFor="let item of popularProducts" class="col-6 col-lg-4">
+                     <div *ngFor="let item of popularProducts" class="col-6 col-lg-4">
                         <article>
                             <div class="figure-grid">
                                 <div class="image">
                                     <span  *ngIf="(item.discount>0)"  style="direction: ltr;" class="badge badge-warning">-{{item.discount}}%</span>
                                        
                                     <a routerLink="/product-detail/{{item.id}}">
-                                        <img src="{{imgUrl+item.image}}" alt="" />
+                                        <img src="{{imgUrl+item.productpic_image}}" alt="" />
                                     </a>
                                 </div> 
                                 <div class="text">
@@ -180,9 +182,9 @@
                                         <a routerLink="/product-detail/{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</a>
                                     </h2>
                                     <p style="margin:0 !important;">{{(translateService.currentLang=='ar')?item.store_namear:item.store_name}}</p>
-                                    <sub *ngIf="(item.discount!=0)">{{item.price | number:'1.0-0'}} <span translate>currency</span></sub>
+                                    <!-- <sub *ngIf="(item.discount!=0)">{{item.price | number:'1.0-0'}} <span translate>currency</span></sub>
                                             <span *ngIf="(item.discount==0)" style="font-size:12px;">{{item.price | number:'1.0-0'}} <span translate>currency</span></span>
-                                            <sup *ngIf="(item.discount>0)">{{(item.price * (100-item.discount) / 100)| number:'1.0-0'}} <span translate>currency</span></sup>
+                                            <sup *ngIf="(item.discount>0)">{{(item.price * (100-item.discount) / 100)| number:'1.0-0'}} <span translate>currency</span></sup> -->
                                            <span class="description clearfix">
                                         {{(translateService.currentLang=='ar')?item.descar:item.desc}}
                                     </span>
@@ -195,10 +197,9 @@
 
              </div> 
 
-        </section> -->
+        </section> 
 
         <!-- ========================  Blog ======================== -->
-        <!--
         <br/><br/>
         <div class="container">
             <h2>Testimonals</h2>
@@ -237,68 +238,10 @@
                     </p>
                 </div>
             </div>
-        -->
+        
         <!-- ========================  Newsletter ======================== -->
-        <!-- ========================  Popular products  ======================== -->
 
-        <section  *ngIf="discountProducts && discountProducts.length>0" class="products">
-
-            <!--Header-->
-
-            <header>
-                <div [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}" class="container">
-                    <h2 class="title" translate>home_discount</h2>
-                    <div class="text">
-                        <p>
-                             <a routerLink="/products-list" class="btn btn-main" translate>home_view_all</a>
-                        </p>
-                    </div>
-                </div>
-            </header>
-
-            <!--Content-->
-
-            <div class="container" [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
-            'leftToRight':translateService.currentLang=='en'}">
-
-                <div *ngIf="discountProducts && discountProducts.length>0" class="row">
-
-                    <!--Product item-->
-
-                    <div *ngFor="let item of discountProducts" class="col-6 col-lg-4">
-                        <article>
-                            <div class="figure-grid">
-                                <div class="image">
-                                    <span  *ngIf="(item.discount>0)"  style="direction: ltr;" class="badge badge-warning">-{{item.discount}}%</span>
-                                       
-                                    <a routerLink="/product-detail/{{item.id}}">
-                                        <img style="height:200px;" src="{{imgUrl+item.image}}" alt="" />
-                                    </a>
-                                </div> 
-                                <div class="text">
-                                    <h2 class="title h4">
-                                        <a routerLink="/product-detail/{{item.id}}">{{(translateService.currentLang=='ar')?item.namear:item.name}}</a>
-                                    </h2>
-                                    <p style="margin:0 !important;">{{(translateService.currentLang=='ar')?item.store_namear:item.store_name}}</p>
-                                    <sub *ngIf="(item.discount!=0)">{{item.price | number:'1.0-0'}} <span translate>currency</span></sub>
-                                            <span *ngIf="(item.discount==0)" style="font-size:12px;">{{item.price | number:'1.0-0'}} <span translate>currency</span></span>
-                                            <sup *ngIf="(item.discount>0)">{{(item.price * (100-item.discount) / 100)| number:'1.0-0'}} <span translate>currency</span></sup>
-                                           <span class="description clearfix">
-                                        {{(translateService.currentLang=='ar')?item.descar:item.desc}}
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                </div> <!--/row-->
-
-            </div> <!--/container-fluid-->
-
-        </section>
-
-        <!--
-        <section class="banner">
+        <!-- <section class="banner">
 
             <div class="container-fluid">
 
@@ -331,7 +274,7 @@
             </div> 
 
         </section>
-    -->
+     -->
         <!-- ========================  Instagram ======================== -->
 
         <section class="instagram">
@@ -339,7 +282,7 @@
             <!--Header-->
 
             <header>
-                <a href="https://www.facebook.com/SalahYoussefJewelryMaking?mibextid=2JQ9oc">
+                <a target="_blank" href="https://www.facebook.com/SalahYoussefJewelryMaking?mibextid=2JQ9oc">
                     <h2 class="h6 title">
                         <i class="fa fa-facebook fa-3x"></i> <br>
                         #SalahYoussef
@@ -448,8 +391,7 @@
 
         </section> -->
 
-    </div> <!--/wrapper-->
-
+    
 
 
     

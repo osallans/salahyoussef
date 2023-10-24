@@ -140,23 +140,23 @@ export class ProductDetailComponent implements OnInit {
 
     
   /////////////////////////////////////////
-  this.productService.getProductRooms(id).subscribe((data: any) => {
-      this.productRooms=data.results?data.results:data;},response => {console.error(response);});
+  // this.productService.getProductRooms(id).subscribe((data: any) => {
+  //     this.productRooms=data.results?data.results:data;},response => {console.error(response);});
       
-  this.productService.getProductBranches(id).subscribe((data: any) => {
-        this.productBranches=data.results?data.results:data;
-        console.log(this.productBranches);
-        for(let i=0;i<this.productBranches.length;i++)
-        {  this.productBranches[i].name=this.productBranches[i].district_name+((this.productBranches[i].address)?"("+this.productBranches[i].address+")":"");
-        this.productBranches[i].namear=this.productBranches[i].district_namear+((this.productBranches[i].addressar)?"("+this.productBranches[i].addressar+")":"");
-        }
-      },response => {console.error(response);});
+  // this.productService.getProductBranches(id).subscribe((data: any) => {
+  //       this.productBranches=data.results?data.results:data;
+  //       console.log(this.productBranches);
+  //       for(let i=0;i<this.productBranches.length;i++)
+  //       {  this.productBranches[i].name=this.productBranches[i].district_name+((this.productBranches[i].address)?"("+this.productBranches[i].address+")":"");
+  //       this.productBranches[i].namear=this.productBranches[i].district_namear+((this.productBranches[i].addressar)?"("+this.productBranches[i].addressar+")":"");
+  //       }
+  //     },response => {console.error(response);});
   
-  this.productService.getProductStyles(id).subscribe((data: any) => {
-      this.productStyles=data.results?data.results:data;},response => {console.error(response);});
+  // this.productService.getProductStyles(id).subscribe((data: any) => {
+  //     this.productStyles=data.results?data.results:data;},response => {console.error(response);});
 
-  this.productService.getProductCombs(id).subscribe((data: any) => {
-    this.productCombs=data.results?data.results:data;},response => {console.error(response);});
+  // this.productService.getProductCombs(id).subscribe((data: any) => {
+  //   this.productCombs=data.results?data.results:data;},response => {console.error(response);});
 }
 
 getProductImages(id)
