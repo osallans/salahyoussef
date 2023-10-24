@@ -1,15 +1,22 @@
 .banner1
 {
-  background-image: url("../../assets/images/banner1.JPG")
+  background-image: url("../../assets/images/banner1.JPG");
+   height:600px;
+  width: 1400px; 
 }
 .banner2
 {
   background-image: url("../../assets/images/banner2.JPG");
+   height:500px;
+  width: 1480px; 
 }
 
-.wrapper {
-    max-width: 100%;
+
+/deep/ .wrapper {
+    max-width: 100% !important;
 }
+
+
 /* .card-container {
   display: inline-block;
   
@@ -123,4 +130,12 @@ width:4vw;
 
   ::ng-deep gallery-thumbs {
     visibility: hidden !important;
+  }
+
+  header {
+    display: contents;
+  }
+  .text
+  {
+    display: inline-block;
   }
