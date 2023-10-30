@@ -157,8 +157,8 @@ ul, #myUL {
 
 
 .popularitemsimg{
-  height:500px;
- 
+  height: auto;
+  width: 100%;
 }
 @media (max-width: 1000px ){
 .products article .image img {

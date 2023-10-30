@@ -45,11 +45,15 @@
                   </li>
                   -->
                   <li>
-                      <a class="menu-anchor"  translate>menu_categories <span class="open-dropdown" [ngStyle]="{'right':translateService.currentLang=='ar'? '90%':'0'}"><i class="fa fa-angle-down"></i></span></a>
+                      <a class="menu-anchor"  translate>menu_categories <span class="open-dropdown" [ngStyle]="{'right':translateService.currentLang=='ar'? '90%':'0'}">
+                        <i class="dada" [ngClass]="{'dada-angle-up':translateService.currentLang=='ar',
+                        'dada-angle-down':translateService.currentLang=='en'}"></i>
+                        </span></a>
                       <div class="navbar-dropdown navbar-dropdown-single">
                           <div class="navbar-box">
                               <div class="box-full">
-                                  <div *ngIf="categories && categories.length>0" class="box clearfix">
+                                  <div *ngIf="categories && categories.length>0" class="box clearfix" [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+                                    'leftToRight':translateService.currentLang=='en'}">
                                       <ul>
                                           <!-- li class="label">Browse by Category</li -->
                                           <li *ngFor="let item of categories">
@@ -65,11 +69,15 @@
                   <li><a routerLink="/contact" translate>contact_us</a></li>
                   
                 <li class="nav-settings" >
-                    <a class="menu-anchor"><span id="language_holder" class="nav-settings-value">{{languageHolder}}</span> <span [ngStyle]="{'right':translateService.currentLang=='ar'? '90%':'0'}" class="open-dropdown"><i class="fa fa-angle-down"></i></span></a>
+                    <a class="menu-anchor"><span id="language_holder" class="nav-settings-value">{{languageHolder}}</span> <span [ngStyle]="{'right':translateService.currentLang=='ar'? '90%':'0'}" class="open-dropdown">
+                        <i class="dada" [ngClass]="{'dada-angle-up':translateService.currentLang=='ar',
+                        'dada-angle-down':translateService.currentLang=='en'}"></i>
+                        </span></a>
                     <div class="navbar-dropdown navbar-dropdown-single">
                         <div class="navbar-box">
                             <div class="box-full">
-                                <div class="box clearfix">
+                                <div class="box clearfix" [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+                                'leftToRight':translateService.currentLang=='en'}">
                                     <ul class="nav-settings-list">
                                         <li><a (click)="switchLanguage('en')">ENG</a></li>
                                         <li><a (click)="switchLanguage('ar')">عربي</a></li>

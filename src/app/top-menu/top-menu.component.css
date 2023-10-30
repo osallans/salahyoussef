@@ -22,10 +22,18 @@ nav .navigation-main .floating-menu > ul > li:hover {
     background-color: #966637;
 }
 
-nav .navigation-main {
-    border-top: 1px solid #966637;
+ nav .navigation-main {
+     border-top: 0px; 
     border-bottom: 1px solid #966637;
 }
+@media screen and (min-width: 992px) {
+    nav .navigation-main {    border-top: 1px solid #966637; 
+    }
+}
+nav .navigation-main {
+    /*     border-top: 1px solid #966637; */
+        border-bottom: 1px solid #966637;
+    }
 nav .navigation-main .floating-menu > ul > li .navbar-dropdown .navbar-box .box-full {
     background-color: #282828;
 }
@@ -65,7 +73,25 @@ nav .navigation-main .navbar-dropdown .navbar-box ul > li > a {
         background-color: #181817;
     }
     }
-
+    .dada-angle-up:before {
+        content: "\f107";
+      }
+      .dada-angle-down:before {
+        content: "\f107";
+      }    .dada-angle-right:before {
+        content: "\f107";
+      }
+      .dada-angle-left:before {
+        content: "\f107";
+      }
+      .dada {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 
 
 

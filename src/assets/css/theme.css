@@ -763,10 +763,10 @@ section {
 */
 header {
     display: block;
-    padding-bottom: 20px;
+    padding-bottom: 5px;
     position: relative;
     border-bottom: 1px solid #f3f3f3;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 @media (min-width: 768px) {
