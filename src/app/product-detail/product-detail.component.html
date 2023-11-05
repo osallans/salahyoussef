@@ -73,6 +73,17 @@
 
                                     <hr />
                                     
+                                    <div *ngIf="product.company!=null && translateService.currentLang=='en'" class="info-box">
+                                        <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_company</strong></span>
+                                             <div  class="product-colors clearfix">
+                                                <span class="badge badge-items">
+                                                 {{(translateService.currentLang=='ar')?product.company:product.company}}
+                                                </span>
+                                                <br/>
+                                             </div>
+                                            
+                                    </div>
+                                    <hr *ngIf="product.company!=null && translateService.currentLang=='en'"/>
                                     <!--info-box-->
 
                                     <div class="info-box">

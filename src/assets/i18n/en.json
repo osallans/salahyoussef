@@ -21,6 +21,7 @@
     "modal_close":"Close",
     "modal_showcase":"Add to Showcase",
     "modal_category":"Category",
+    "modal_company":"Company",
     "modal_color":"Color",
     "list_sort": "Sort By",
     "list_name":"Name",
@@ -146,7 +147,7 @@
     "contact_content_7":"Mobile",
     "contact_content_8":"Landline",
     "contact_content_9":"+2 0100 662 1166",
-    "contact_content_10":"+202 2593967",
+    "contact_content_10":"+2 2593967",
     "contact_content_11":"Monday - Saturday 11am to 8pm",
     
 

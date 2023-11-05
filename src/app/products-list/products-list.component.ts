@@ -159,7 +159,7 @@ searchText: string;
     tempSearch.orderfield="name";
     tempSearch.page=1;
     tempSearch.pagesize=4;
-    tempSearch.isfeatured=0;
+    tempSearch.isfeatured=1;
    
     this.productService.getProducts(tempSearch).subscribe((data: any) => {
      

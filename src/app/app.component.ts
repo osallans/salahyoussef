@@ -13,7 +13,7 @@ declare let gtag: Function;
 })
 
 export class AppComponent {
-  title = 'Beitak';
+  title = 'SalahYoussef';
   currentUser: User;
   itemSelected='';
 constructor(private router: Router,

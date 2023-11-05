@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
   getPopularProducts()
   {
     let tempSearch=new ProductSearch();
-    tempSearch.isfeatured=0;
+    tempSearch.isfeatured=1;
 
    
     this.productService.getRandomProducts(tempSearch).subscribe((data: any) => {
