@@ -73,7 +73,7 @@
 
                                     <hr />
                                     
-                                    <div *ngIf="product.company!=null && translateService.currentLang=='en'" class="info-box">
+                                    <div *ngIf="product.company!=null" class="info-box">
                                         <span [ngStyle]="{'text-align':translateService.currentLang=='ar'?'right':'left'}"><strong translate>modal_company</strong></span>
                                              <div  class="product-colors clearfix">
                                                 <span class="badge badge-items">
@@ -83,7 +83,7 @@
                                              </div>
                                             
                                     </div>
-                                    <hr *ngIf="product.company!=null && translateService.currentLang=='en'"/>
+                                    <hr *ngIf="product.company!=null"/>
                                     <!--info-box-->
 
                                     <div class="info-box">
