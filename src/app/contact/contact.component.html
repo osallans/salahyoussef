@@ -7,12 +7,12 @@
     <div id="map">
 
      <!--=========================== Maps & rating ============================-->
-    <div class="mapouter">
+    <!-- <div class="mapouter">
             <div class="gmap_canvas">
         <iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0"
                      marginwidth="0" src="https://maps.google.com/maps?height=400&amp;hl=en&amp;q=Salah Youssef - jewelry making tools & equipment, 78 Al Bab Al Thaleth, El-Gamaleya, El Gamaliya, Cairo Governorate 4331154&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
                      </div>
-            </div>
+            </div> -->
     <img src="assets/images/image.png" style="width: 100%;" />
     </div>
 
@@ -26,6 +26,10 @@
 
                     <div class="contact-info">
                         <div class="row">
+                            <div class="col-sm-12" style="text-align: center;">
+                                <h4 translate class="text-center">contact_content_12</h4>
+                            </div></div>
+                        <div class="row">
 
                             
                             <div class="col-sm-4">
@@ -33,6 +37,8 @@
                                     <span class="icon icon-phone"></span>
                                     <figcaption>
                                         <strong translate>contact_content_5</strong>
+                                        <strong translate>contact_content_12</strong>
+                                       
                                         <span [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
                                         'leftToRight':translateService.currentLang=='en'}">
                                           
@@ -40,6 +46,17 @@
                                             <br />
                                             
                                             <strong translate>contact_content_8 </strong> : <a href="tel:0022593967"><span translate> contact_content_10  </span> </a>
+                                        </span>
+                                        <hr/>
+                                       
+                                        <strong translate>contact_content_13</strong>
+                                        <span [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
+                                        'leftToRight':translateService.currentLang=='en'}">
+                                          
+                                            <strong translate>contact_content_7 </strong> :<a href="tel:002012897355"> <span translate> contact_content_22   </span> </a>
+                                            <br />
+                                            
+                                            <strong translate>contact_content_8 </strong> : <a href="tel:00224553024"><span translate> contact_content_23  </span> </a>
                                         </span>
                                     </figcaption>
                                 </figure>
@@ -49,8 +66,15 @@
                                 <figure class="text-center">
                                     <span class="icon icon-map-marker"></span>
                                     <figcaption>
+                                        
                                         <strong translate>contact_content_1</strong>
-                                        <span translate>contact_content_2</span>
+                                        <strong translate>contact_content_12</strong>
+                                        <span><a translate style="color:blue" href="https://maps.google.com/maps?height=400&amp;hl=en&amp;q=Salah Youssef - jewelry making tools & equipment, 78 Al Bab Al Thaleth, El-Gamaleya, El Gamaliya, Cairo Governorate 4331154&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;" target="_blank"> contact_content_14</a></span>
+                                        <br><span translate>contact_content_2</span>
+                                       <hr/>
+                                        <strong translate>contact_content_13</strong>
+                                        <span><a translate style="color:blue" href="https://maps.app.goo.gl/S2Tbnjufy5hrfqcY9" target="_blank"> contact_content_14</a></span>
+                                        <br/><span translate>contact_content_21</span>
                                     </figcaption>
                                 </figure>
                             </div>
@@ -70,6 +94,8 @@
                            
                         </div>
                     </div>
+
+                    
 
                     
                     <div class="contact-info" [ngClass]="{'rightToLeft':translateService.currentLang=='ar',
